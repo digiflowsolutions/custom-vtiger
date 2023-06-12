@@ -1,0 +1,14 @@
+/* Custom styles for your webpage */
+body {
+  background-color: #f8f9fa;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.custom-heading {
+  color: #dc3545;
+  font-size: 24px;
+  font-weight: bold;
+}
