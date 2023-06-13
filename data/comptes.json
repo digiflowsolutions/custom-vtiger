@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+
+    "name": "Compte A",
+    "phone": "1234567890",
+    "address": "123 Main St",
+    "postal_code": "12345",
+    "city": "Example City",
+    "contact_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Compte B",
+    "address": "456 Elm St",
+    "postal_code": "54321",
+    "city": "Sample City",
+    "contact_id": 2
+  },
+  {
+    "id": 3,
+    "name": "Compte C",
+    "address": "789 Oak St",
+    "postal_code": "98765",
+    "city": "Test City",
+    "contact_id": 3
+  }
+]
