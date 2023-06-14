@@ -17,8 +17,10 @@ fetch("data/comptes.json")
       const image = document.createElement("img");
       // image.src = contact.Photo;
       image.src = compte.picture;
-      image.classList.add("card-img-top", "rounded");
-      image.alt = "Compte Photo";
+      image.classList.add("card-img-top", "rounded", "p-3");
+      image.alt = "Contact Photo";
+      image.style.width = "100%";
+      image.style.height = "300px";
 
       // Create card body div
       const cardBody = document.createElement("div");

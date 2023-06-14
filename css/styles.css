@@ -1,6 +1,7 @@
 /* Custom styles for your webpage */
 body {
-  background-color: #f8f9fa;
+  padding: 50px;
+  background-color: #c7d8de !important;
 }
 
 .container {
