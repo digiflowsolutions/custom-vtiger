@@ -17,7 +17,7 @@ fetch("data/contacts.json")
       const image = document.createElement("img");
       // image.src = contact.Photo;
       image.src = contact.picture;
-      image.classList.add("card-img-top");
+      image.classList.add("card-img-top", "rounded");
       image.alt = "Contact Photo";
 
       // Create card body div
