@@ -1,42 +1,64 @@
-// Get the contact ID from the URL query parameter
 const urlParams = new URLSearchParams(window.location.search);
 const contactId = urlParams.get("id");
 
 fetch("data/contacts.json")
   .then((response) => response.json())
   .then((data) => {
-    // const contact = data.find((c) => c.id === parseInt(contactId));
-    const contact = data.find((c) => c.id === contactId);
+    const contact = data.find((c) => c.id === parseInt(contactId));
+    // const contact = data.find((c) => c.id === contactId);
 
     if (contact) {
       const contactDetails = document.getElementById("contact-details");
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.style.width = "18rem";
 
-      // Create a table to display the contact details
-      const table = document.createElement("table");
-      table.classList.add("table", "table-striped");
+      // Create image element
+      const image = document.createElement("img");
+      // image.src = contact.Photo;
+      image.src = contact.picture;
+      image.classList.add("card-img-top");
+      image.alt = "Contact Photo";
 
-      // Iterate over the fields of the contact object
-      Object.entries(contact).forEach(([field, value]) => {
-        // Create a row for each field-value pair
-        const row = document.createElement("tr");
+      // Create card body div
+      const cardBody = document.createElement("div");
+      cardBody.classList.add("card-body");
 
-        // Create cells for the field and value
-        const fieldCell = document.createElement("td");
-        fieldCell.textContent = field;
+      // Create card title (name)
+      const cardTitle = document.createElement("h5");
+      cardTitle.classList.add("card-title");
+      cardTitle.textContent =
+        contact.last_name.toUpperCase() + " " + contact.first_name;
 
-        const valueCell = document.createElement("td");
-        valueCell.textContent = value;
+      // Create card text (phone, email, address, city)
+      const cardText = document.createElement("p");
+      cardText.classList.add("card-text");
+      cardText.innerHTML = `<strong>Téléphone: </strong> ${contact.mobile_phone}<br>
+                     <strong>Email: </strong> ${contact.email_main}<br>
+                     <strong>Addresse: </strong>${contact.address1}<br>
+                     <strong>code Postal: </strong>${contact.postal_code}<br>
+                     <strong>Ville:</strong> ${contact.city}`;
 
-        // Append the cells to the row
-        row.appendChild(fieldCell);
-        row.appendChild(valueCell);
+      // Create card subtitle (description)
+      const cardSubtitle = document.createElement("h6");
+      cardSubtitle.classList.add("card-subtitle", "mb-2", "text-muted");
+      cardSubtitle.textContent = "Description";
 
-        // Append the row to the table
-        table.appendChild(row);
-      });
+      // Create card description
+      const cardDescription = document.createElement("p");
+      cardDescription.classList.add("card-text");
+      cardDescription.textContent = contact.description;
 
-      // Append the table to the contact-details container
-      contactDetails.appendChild(table);
+      // Append elements to their respective parents
+      cardBody.appendChild(cardTitle);
+      cardBody.appendChild(cardText);
+      cardBody.appendChild(cardSubtitle);
+      cardBody.appendChild(cardDescription);
+
+      card.appendChild(image);
+      card.appendChild(cardBody);
+
+      contactDetails.appendChild(card);
     } else {
       const errorElement = document.createElement("p");
       errorElement.classList.add("text-danger");
