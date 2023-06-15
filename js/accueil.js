@@ -7,9 +7,14 @@ const imgBdl = "./../assets/img/icone-bdl.png";
 const imgFactures = "./../assets/img/icone-factures.png";
 const imgReglements = "./../assets/img/icone-reglement.png";
 
-const linkContacts = "";
-const linkComptes = "";
-const linkAffaires = "";
+const linkContacts = "/contacts.html";
+const linkComptes = "/comptes.html";
+const linkAffaires = "/affaires.html";
+const linkDevis = "/devis.html";
+const linkBdc = "/bdc.html";
+const linkBdl = "/bdl.html";
+const linkFactures = "/factures.html";
+const linkReglements = "/reglements.html";
 
 const Accueil = () => {
   const accueilContainer = document.createElement("div");
@@ -34,9 +39,9 @@ const createFolder = () => {
   const rowVentes1 = document.createElement("div");
   rowVentes1.className = "row d-flex justify-content-between m-auto";
 
-  rowVentes1.appendChild(createIcon(imgContact, "Icone contact"));
-  rowVentes1.appendChild(createIcon(imgCompte, "Icone compte"));
-  rowVentes1.appendChild(createIcon(imgAffaire, "Icone affaire"));
+  rowVentes1.appendChild(createIcon(imgContact, "Icone contact", linkContacts));
+  rowVentes1.appendChild(createIcon(imgCompte, "Icone compte", linkComptes));
+  rowVentes1.appendChild(createIcon(imgAffaire, "Icone affaire", linkAffaires));
 
   folderDivVentes.appendChild(rowVentes1);
 
@@ -54,10 +59,12 @@ const createFolder = () => {
   const rowFacturation2 = document.createElement("div");
   rowFacturation2.className = "row d-flex justify-content-between m-auto";
 
-  rowFacturation1.appendChild(createIcon(imgDevis, "Icone devis"));
-  rowFacturation1.appendChild(createIcon(imgBdc, "Icone bdc"));
-  rowFacturation1.appendChild(createIcon(imgBdl, "Icone bdl"));
-  rowFacturation2.appendChild(createIcon(imgReglements, "Icone reglement"));
+  rowFacturation1.appendChild(createIcon(imgDevis, "Icone devis", linkDevis));
+  rowFacturation1.appendChild(createIcon(imgBdc, "Icone bdc", linkBdc));
+  rowFacturation1.appendChild(createIcon(imgBdl, "Icone bdl", linkBdl));
+  rowFacturation2.appendChild(
+    createIcon(imgReglements, "Icone reglement", "/reglement", linkReglements)
+  );
 
   folderDivFacturation.appendChild(rowFacturation1);
   folderDivFacturation.appendChild(rowFacturation2);
@@ -72,7 +79,7 @@ const createFolder = () => {
   return folderDiv;
 };
 
-const createIcon = (src, alt) => {
+const createIcon = (src, alt, link) => {
   const iconDiv = document.createElement("div");
   iconDiv.className = "icone rounded p-3";
   iconDiv.style.display = "inline-block";
@@ -83,6 +90,10 @@ const createIcon = (src, alt) => {
   img.alt = alt;
   img.width = "130";
   img.height = "130";
+
+  if (link) {
+    iconDiv.setAttribute("data-href", link); // Set the link value as a data attribute
+  }
 
   iconDiv.appendChild(img);
 
@@ -106,10 +117,26 @@ const openModal = (content) => {
   modalContent.innerHTML = content;
   modalContent.appendChild(closeIcon);
 
+  // Find all the icons inside the modal
+  const icons = modalContent.getElementsByClassName("icone");
+
+  // Wrap each icon with an anchor tag
+  for (let i = 0; i < icons.length; i++) {
+    const icon = icons[i];
+    const link = icon.getAttribute("data-href"); // Get the link value from the data attribute
+
+    if (link) {
+      const anchor = document.createElement("a");
+      anchor.href = link;
+
+      // Replace the icon div with the anchor tag
+      icon.parentNode.replaceChild(anchor, icon);
+      anchor.appendChild(icon);
+    }
+  }
+
   modal.appendChild(modalContent);
-
   document.body.appendChild(modal);
-
   modal.style.display = "block";
 
   window.addEventListener("click", (event) => {
