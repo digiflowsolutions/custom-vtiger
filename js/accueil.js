@@ -13,7 +13,7 @@ const linkAffaires = "";
 
 const Accueil = () => {
   const accueilContainer = document.createElement("div");
-  accueilContainer.className = "container ";
+  accueilContainer.className = "container";
 
   const folder = createFolder();
 
@@ -26,8 +26,7 @@ const createFolder = () => {
   const folderDiv = document.createElement("div");
   folderDiv.className = "row justify-content-around";
 
-  //VENTES
-
+  // VENTES
   const folderDivVentes = document.createElement("div");
   folderDivVentes.className = "folder bg-info mb-3 text-center";
   folderDivVentes.style.height = "400px";
@@ -41,7 +40,11 @@ const createFolder = () => {
 
   folderDivVentes.appendChild(rowVentes1);
 
-  //FACTURATION
+  folderDivVentes.addEventListener("click", () => {
+    openModal(rowVentes1.innerHTML);
+  });
+
+  // FACTURATION
   const folderDivFacturation = document.createElement("div");
   folderDivFacturation.className = "folder bg-success mb-3 text-center";
   folderDivFacturation.style.height = "400px";
@@ -59,6 +62,10 @@ const createFolder = () => {
   folderDivFacturation.appendChild(rowFacturation1);
   folderDivFacturation.appendChild(rowFacturation2);
 
+  folderDivFacturation.addEventListener("click", () => {
+    openModal(rowFacturation1.innerHTML + rowFacturation2.innerHTML);
+  });
+
   folderDiv.appendChild(folderDivVentes);
   folderDiv.appendChild(folderDivFacturation);
 
@@ -67,20 +74,53 @@ const createFolder = () => {
 
 const createIcon = (src, alt) => {
   const iconDiv = document.createElement("div");
-  // iconDiv.classList.add("icone", "rounded", "p-3");
-  iconDiv.className = "icone rounded p-3 ";
-  iconDiv.style.display = "inline-block"; // Add this line to make the div adjust to the width of the image
+  iconDiv.className = "icone rounded p-3";
+  iconDiv.style.display = "inline-block";
 
   const img = document.createElement("img");
   img.className = "icone rounded p-3 bg-white";
   img.src = src;
   img.alt = alt;
-  img.width = "130"; // Set the width of the image
-  img.height = "130"; // Maintain the aspect ratio of the image
+  img.width = "130";
+  img.height = "130";
 
   iconDiv.appendChild(img);
 
   return iconDiv;
+};
+
+const openModal = (content) => {
+  const modal = document.createElement("div");
+  modal.className = "modal";
+
+  const modalContent = document.createElement("div");
+  modalContent.className = "modal-content";
+
+  const closeIcon = document.createElement("span");
+  closeIcon.className = "close";
+  closeIcon.innerHTML = "&times;";
+  closeIcon.addEventListener("click", () => {
+    closeModal(modal);
+  });
+
+  modalContent.appendChild(closeIcon);
+  modalContent.innerHTML = content;
+
+  modal.appendChild(modalContent);
+
+  document.body.appendChild(modal);
+
+  modal.style.display = "block";
+
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeModal(modal);
+    }
+  });
+};
+
+const closeModal = (modal) => {
+  document.body.removeChild(modal);
 };
 
 document.addEventListener("DOMContentLoaded", function () {
