@@ -13,7 +13,7 @@ const linkAffaires = "";
 
 const Accueil = () => {
   const accueilContainer = document.createElement("div");
-  accueilContainer.className = "container";
+  accueilContainer.className = "container ";
 
   const folder = createFolder();
 
@@ -24,28 +24,40 @@ const Accueil = () => {
 
 const createFolder = () => {
   const folderDiv = document.createElement("div");
-  folderDiv.className = "row";
+  folderDiv.className = "row justify-content-around";
 
-  //ventes
+  //VENTES
+
   const folderDivVentes = document.createElement("div");
-  folderDivVentes.className = "folder bg-info mb-3 col-5 text-center";
+  folderDivVentes.className = "folder bg-info mb-3 text-center";
+  folderDivVentes.style.height = "400px";
 
-  // add row inside row
+  const rowVentes1 = document.createElement("div");
+  rowVentes1.className = "row d-flex justify-content-between m-auto";
 
-  folderDivVentes.appendChild(createIcon(imgContact, "Icone contact"));
-  folderDivVentes.appendChild(createIcon(imgCompte, "Icone compte"));
-  folderDivVentes.appendChild(createIcon(imgAffaire, "Icone affaire"));
+  rowVentes1.appendChild(createIcon(imgContact, "Icone contact"));
+  rowVentes1.appendChild(createIcon(imgCompte, "Icone compte"));
+  rowVentes1.appendChild(createIcon(imgAffaire, "Icone affaire"));
 
-  //facturation
+  folderDivVentes.appendChild(rowVentes1);
+
+  //FACTURATION
   const folderDivFacturation = document.createElement("div");
-  folderDivFacturation.className = "folder bg-success mb-3 col-5 text-center";
+  folderDivFacturation.className = "folder bg-success mb-3 text-center";
+  folderDivFacturation.style.height = "400px";
 
-  folderDivFacturation.appendChild(createIcon(imgDevis, "Icone devis"));
-  folderDivFacturation.appendChild(createIcon(imgBdc, "Icone bdc"));
-  folderDivFacturation.appendChild(createIcon(imgBdl, "Icone bdl"));
-  folderDivFacturation.appendChild(
-    createIcon(imgReglements, "Icone reglement")
-  );
+  const rowFacturation1 = document.createElement("div");
+  rowFacturation1.className = "row d-flex justify-content-between m-auto";
+  const rowFacturation2 = document.createElement("div");
+  rowFacturation2.className = "row d-flex justify-content-between m-auto";
+
+  rowFacturation1.appendChild(createIcon(imgDevis, "Icone devis"));
+  rowFacturation1.appendChild(createIcon(imgBdc, "Icone bdc"));
+  rowFacturation1.appendChild(createIcon(imgBdl, "Icone bdl"));
+  rowFacturation2.appendChild(createIcon(imgReglements, "Icone reglement"));
+
+  folderDivFacturation.appendChild(rowFacturation1);
+  folderDivFacturation.appendChild(rowFacturation2);
 
   folderDiv.appendChild(folderDivVentes);
   folderDiv.appendChild(folderDivFacturation);
