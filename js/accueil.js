@@ -103,8 +103,8 @@ const openModal = (content) => {
     closeModal(modal);
   });
 
-  modalContent.appendChild(closeIcon);
   modalContent.innerHTML = content;
+  modalContent.appendChild(closeIcon);
 
   modal.appendChild(modalContent);
 
