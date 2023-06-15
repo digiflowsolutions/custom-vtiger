@@ -64,3 +64,11 @@ header {
   text-decoration: none;
   cursor: pointer;
 }
+
+img {
+  cursor: pointer;
+}
+
+a {
+  width: fit-content;
+}

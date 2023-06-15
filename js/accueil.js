@@ -33,8 +33,9 @@ const createFolder = () => {
 
   // VENTES
   const folderDivVentes = document.createElement("div");
-  folderDivVentes.className = "folder bg-info mb-3 text-center";
+  folderDivVentes.className = "folder mb-3 text-center";
   folderDivVentes.style.height = "400px";
+  folderDivVentes.style.backgroundColor = "#f5ebd8";
 
   const rowVentes1 = document.createElement("div");
   rowVentes1.className = "row d-flex justify-content-between m-auto";
@@ -51,8 +52,9 @@ const createFolder = () => {
 
   // FACTURATION
   const folderDivFacturation = document.createElement("div");
-  folderDivFacturation.className = "folder bg-success mb-3 text-center";
+  folderDivFacturation.className = "folder mb-3 text-center";
   folderDivFacturation.style.height = "400px";
+  folderDivFacturation.style.backgroundColor = "#f5ebd8";
 
   const rowFacturation1 = document.createElement("div");
   rowFacturation1.className = "row d-flex justify-content-between m-auto";
