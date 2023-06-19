@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  background-color: #c7d8de !important;
+  /* background-color: #c7d8de !important; */
 }
 
 .container {
@@ -15,22 +15,4 @@ body {
 
 header {
   margin-bottom: 30px;
-}
-
-.contact-photo {
-  width: 100%;
-  height: 500px;
-}
-
-.contact-title {
-  margin-top: 20px;
-}
-
-.contact-details-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.description-title {
-  margin-top: 20px;
 }

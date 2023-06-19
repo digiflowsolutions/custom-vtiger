@@ -4,8 +4,7 @@ const compteId = urlParams.get("id");
 fetch("data/comptes.json")
   .then((response) => response.json())
   .then((data) => {
-    const compte = data.find((c) => c.id === parseInt(compteId));
-    // const contact = data.find((c) => c.id === contactId);
+    const compte = data.find((c) => c.accountid === parseInt(compteId));
 
     if (compte) {
       const compteDetails = document.getElementById("compte-details");
@@ -15,7 +14,6 @@ fetch("data/comptes.json")
 
       // Create image element
       const image = document.createElement("img");
-      // image.src = contact.Photo;
       image.src = compte.picture;
       image.classList.add("card-img-top", "rounded", "p-3");
       image.alt = "Contact Photo";
@@ -29,15 +27,28 @@ fetch("data/comptes.json")
       // Create card title (name)
       const cardTitle = document.createElement("h5");
       cardTitle.classList.add("card-title");
-      cardTitle.textContent = compte.account_name;
+      cardTitle.textContent = compte.accountname;
 
       // Create card text (phone, email, address, city)
       const cardText = document.createElement("p");
       cardText.classList.add("card-text");
-      cardText.innerHTML = `<strong>Téléphone: </strong> ${compte.mobile_phone}<br>
-                     <strong>Email: </strong> ${compte.email_main}<br>
-                     <strong>Addresse: </strong>${compte.address1}<br>
-                     <strong>code Postal: </strong>${compte.postal_code}<br>
+
+      const phoneLink = document.createElement("a");
+      phoneLink.href = `tel:${compte.mobile_phone}`;
+      phoneLink.textContent = compte.mobile_phone;
+      cardText.appendChild(document.createTextNode("Téléphone: "));
+      cardText.appendChild(phoneLink);
+      cardText.appendChild(document.createElement("br"));
+
+      const emailLink = document.createElement("a");
+      emailLink.href = `mailto:${compte.email_main}`;
+      emailLink.textContent = compte.email_main;
+      cardText.appendChild(document.createTextNode("Email: "));
+      cardText.appendChild(emailLink);
+      cardText.appendChild(document.createElement("br"));
+
+      cardText.innerHTML += `<strong>Adresse: </strong>${compte.address1}<br>
+                     <strong>Code Postal: </strong>${compte.postal_code}<br>
                      <strong>Ville:</strong> ${compte.city}`;
 
       // Create card subtitle (description)

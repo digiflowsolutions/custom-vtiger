@@ -20,18 +20,22 @@ fetch("data/comptes.json")
       "g-4"
     );
 
-    let filteredData = data; // Initially, set the filteredData to all contacts
+    let filteredData = data; // Initially, set the filteredData to all comptes
 
     const renderComptes = () => {
-      boardList.innerHTML = ""; // Clear the existing contacts
+      boardList.innerHTML = ""; // Clear the existing comptes
 
       filteredData.forEach((compte) => {
         const cardColumn = document.createElement("div");
         cardColumn.classList.add("col", "d-flex", "justify-content-center");
 
         const link = document.createElement("a");
-        link.href = `contact.html?id=${compte.accountid}`; // Link to contact.html with contact ID
-        link.classList.add("list-group-item", "list-group-item-action");
+        link.href = `compte.html?id=${compte.accountid}`; // Link to contact.html with contact ID
+        link.classList.add(
+          "list-group-item",
+          "text-decoration-none",
+          "text-muted"
+        );
 
         const card = document.createElement("div");
         card.classList.add("card");
@@ -82,19 +86,19 @@ fetch("data/comptes.json")
     const filterComptes = (event) => {
       const searchTerm = event.target.value.toLowerCase();
 
-      // Filter the contacts based on the search term
+      // Filter the comptes based on the search term
       filteredData = data.filter(
         (compte) =>
           compte.last_name.toLowerCase().includes(searchTerm) ||
           compte.first_name.toLowerCase().includes(searchTerm)
       );
 
-      renderComptes(); // Render the filtered contacts
+      renderComptes(); // Render the filtered comptes
     };
 
     searchBar.addEventListener("input", filterComptes);
 
-    renderComptes(); // Render all contacts initially
+    renderComptes(); // Render all comptes initially
 
     comptesContainer.appendChild(boardList);
   })

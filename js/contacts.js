@@ -31,7 +31,11 @@ fetch("data/contacts.json")
 
         const link = document.createElement("a");
         link.href = `contact.html?id=${contact.id}`; // Link to contact.html with contact ID
-        link.classList.add("list-group-item", "list-group-item-action");
+        link.classList.add(
+          "list-group-item",
+          "text-decoration-none",
+          "text-muted"
+        );
 
         const card = document.createElement("div");
         card.classList.add("card");
