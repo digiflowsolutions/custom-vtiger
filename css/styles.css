@@ -1,5 +1,4 @@
-/* Custom styles for your webpage */
-body {
+Custom styles for your webpage body {
   padding: 50px;
   background-color: #c7d8de !important;
 }
@@ -34,18 +33,25 @@ header {
   position: relative;
   margin: 15% auto;
   padding: 20px;
-  width: 80%;
+  width: 90%;
   max-width: 600px;
   background-color: #fefefe;
   border: 1px solid #888;
 }
 
 .modal-content {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  height: 90vh;
+  position: relative;
+  bottom: 107px;
 }
 
 .close {
@@ -71,4 +77,8 @@ img {
 
 a {
   width: fit-content;
+}
+
+.folder {
+  cursor: pointer;
 }

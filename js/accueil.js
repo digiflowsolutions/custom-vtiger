@@ -40,15 +40,13 @@ const createFolder = () => {
   const rowVentes1 = document.createElement("div");
   rowVentes1.className = "row d-flex justify-content-between m-auto";
 
-  rowVentes1.appendChild(createIcon(imgContact, "Icone contact", linkContacts));
-  rowVentes1.appendChild(createIcon(imgCompte, "Icone compte", linkComptes));
-  rowVentes1.appendChild(createIcon(imgAffaire, "Icone affaire", linkAffaires));
+  rowVentes1.appendChild(createIcon(imgContact, "contacts", linkContacts));
+  rowVentes1.appendChild(createIcon(imgCompte, "comptes", linkComptes));
+  rowVentes1.appendChild(createIcon(imgAffaire, "affaires", linkAffaires));
 
   folderDivVentes.appendChild(rowVentes1);
 
-  folderDivVentes.addEventListener("click", () => {
-    openModal(rowVentes1.innerHTML);
-  });
+  folderDiv.appendChild(folderDivVentes);
 
   // FACTURATION
   const folderDivFacturation = document.createElement("div");
@@ -61,21 +59,16 @@ const createFolder = () => {
   const rowFacturation2 = document.createElement("div");
   rowFacturation2.className = "row d-flex justify-content-between m-auto";
 
-  rowFacturation1.appendChild(createIcon(imgDevis, "Icone devis", linkDevis));
-  rowFacturation1.appendChild(createIcon(imgBdc, "Icone bdc", linkBdc));
-  rowFacturation1.appendChild(createIcon(imgBdl, "Icone bdl", linkBdl));
+  rowFacturation1.appendChild(createIcon(imgDevis, "devis", linkDevis));
+  rowFacturation1.appendChild(createIcon(imgBdc, "bon de commande", linkBdc));
+  rowFacturation1.appendChild(createIcon(imgBdl, "bon de livraison", linkBdl));
   rowFacturation2.appendChild(
-    createIcon(imgReglements, "Icone reglement", "/reglement", linkReglements)
+    createIcon(imgReglements, "reglement", linkReglements)
   );
 
   folderDivFacturation.appendChild(rowFacturation1);
   folderDivFacturation.appendChild(rowFacturation2);
 
-  folderDivFacturation.addEventListener("click", () => {
-    openModal(rowFacturation1.innerHTML + rowFacturation2.innerHTML);
-  });
-
-  folderDiv.appendChild(folderDivVentes);
   folderDiv.appendChild(folderDivFacturation);
 
   return folderDiv;
@@ -92,12 +85,17 @@ const createIcon = (src, alt, link) => {
   img.alt = alt;
   img.width = "130";
   img.height = "130";
+  const title = document.createElement("p");
+  title.innerHTML = alt;
 
   if (link) {
-    iconDiv.setAttribute("data-href", link); // Set the link value as a data attribute
+    iconDiv.addEventListener("click", () => {
+      window.location.href = link;
+    });
   }
 
   iconDiv.appendChild(img);
+  iconDiv.appendChild(title);
 
   return iconDiv;
 };
