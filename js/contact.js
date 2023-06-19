@@ -5,62 +5,61 @@ fetch("data/contacts.json")
   .then((response) => response.json())
   .then((data) => {
     const contact = data.find((c) => c.id === parseInt(contactId));
-    // const contact = data.find((c) => c.id === contactId);
 
     if (contact) {
       const contactDetails = document.getElementById("contact-details");
-      const card = document.createElement("div");
-      card.classList.add("card");
-      card.style.width = "18rem";
+      const page = document.createElement("div");
+      page.classList.add("page", "row");
 
-      // Create image element
       const image = document.createElement("img");
-      // image.src = contact.Photo;
       image.src = contact.picture;
-      image.classList.add("card-img-top", "rounded", "p-3");
+      image.classList.add("contact-photo", "col-lg-6", "p-3");
       image.alt = "Contact Photo";
-      image.style.width = "100%";
-      image.style.height = "300px";
 
-      // Create card body div
-      const cardBody = document.createElement("div");
-      cardBody.classList.add("card-body");
+      const contactInfo = document.createElement("div");
+      contactInfo.classList.add("contact-info", "col-lg-6");
 
-      // Create card title (name)
-      const cardTitle = document.createElement("h5");
-      cardTitle.classList.add("card-title");
-      cardTitle.textContent =
+      const contactTitle = document.createElement("h2");
+      contactTitle.classList.add("contact-title");
+      contactTitle.textContent =
         contact.last_name.toUpperCase() + " " + contact.first_name;
 
-      // Create card text (phone, email, address, city)
-      const cardText = document.createElement("p");
-      cardText.classList.add("card-text");
-      cardText.innerHTML = `<strong>Téléphone: </strong> ${contact.mobile_phone}<br>
-                     <strong>Email: </strong> ${contact.email_main}<br>
-                     <strong>Addresse: </strong>${contact.address1}<br>
-                     <strong>code Postal: </strong>${contact.postal_code}<br>
-                     <strong>Ville:</strong> ${contact.city}`;
+      const contactDetailsList = document.createElement("ul");
+      contactDetailsList.classList.add("contact-details-list");
 
-      // Create card subtitle (description)
-      const cardSubtitle = document.createElement("h6");
-      cardSubtitle.classList.add("card-subtitle", "mb-2", "text-muted");
-      cardSubtitle.textContent = "Description";
+      const createContactDetail = (label, value) => {
+        const detailItem = document.createElement("li");
+        const detailLabel = document.createElement("strong");
+        detailLabel.textContent = label + ": ";
+        const detailValue = document.createTextNode(value);
+        detailItem.appendChild(detailLabel);
+        detailItem.appendChild(detailValue);
+        contactDetailsList.appendChild(detailItem);
+      };
 
-      // Create card description
-      const cardDescription = document.createElement("p");
-      cardDescription.classList.add("card-text");
-      cardDescription.textContent = contact.description;
+      createContactDetail("Téléphone", contact.mobile_phone);
+      createContactDetail("Email", contact.email_main);
+      createContactDetail("Adresse", contact.address1);
+      createContactDetail("Code Postal", contact.postal_code);
+      createContactDetail("Ville", contact.city);
 
-      // Append elements to their respective parents
-      cardBody.appendChild(cardTitle);
-      cardBody.appendChild(cardText);
-      cardBody.appendChild(cardSubtitle);
-      cardBody.appendChild(cardDescription);
+      const descriptionTitle = document.createElement("h3");
+      descriptionTitle.classList.add("description-title");
+      descriptionTitle.textContent = "Description";
 
-      card.appendChild(image);
-      card.appendChild(cardBody);
+      const descriptionText = document.createElement("p");
+      descriptionText.classList.add("description-text");
+      descriptionText.textContent = contact.description;
 
-      contactDetails.appendChild(card);
+      contactInfo.appendChild(contactTitle);
+      contactInfo.appendChild(contactDetailsList);
+      contactInfo.appendChild(descriptionTitle);
+      contactInfo.appendChild(descriptionText);
+
+      page.appendChild(image);
+      page.appendChild(contactInfo);
+
+      contactDetails.appendChild(page);
     } else {
       const errorElement = document.createElement("p");
       errorElement.classList.add("text-danger");

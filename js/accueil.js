@@ -1,3 +1,4 @@
+const imgVente = "./../assets/img/icone-vente.png";
 const imgContact = "./../../assets/img/icone-contacts.png";
 const imgCompte = "./../../assets/img/icone-comptes.png";
 const imgAffaire = "./../../assets/img/icone-affaires.png";
@@ -33,12 +34,10 @@ const createFolder = () => {
 
   // VENTES
   const folderDivVentes = document.createElement("div");
-  folderDivVentes.className = "folder mb-3 text-center";
-  folderDivVentes.style.height = "400px";
-  folderDivVentes.style.backgroundColor = "#f5ebd8";
-
+  folderDivVentes.className = "folder mb-3 text-center bg-white";
   const rowVentes1 = document.createElement("div");
   rowVentes1.className = "row d-flex justify-content-between m-auto";
+  rowVentes1.style.margin = "0 -5px";
 
   rowVentes1.appendChild(createIcon(imgContact, "contacts", linkContacts));
   rowVentes1.appendChild(createIcon(imgCompte, "comptes", linkComptes));
@@ -50,14 +49,14 @@ const createFolder = () => {
 
   // FACTURATION
   const folderDivFacturation = document.createElement("div");
-  folderDivFacturation.className = "folder mb-3 text-center";
-  folderDivFacturation.style.height = "400px";
-  folderDivFacturation.style.backgroundColor = "#f5ebd8";
+  folderDivFacturation.className = "folder mb-3 text-center bg-white";
 
   const rowFacturation1 = document.createElement("div");
   rowFacturation1.className = "row d-flex justify-content-between m-auto";
+  rowFacturation1.style.margin = "0 -5px";
   const rowFacturation2 = document.createElement("div");
   rowFacturation2.className = "row d-flex justify-content-between m-auto";
+  rowFacturation2.style.margin = "0 -5px";
 
   rowFacturation1.appendChild(createIcon(imgDevis, "devis", linkDevis));
   rowFacturation1.appendChild(createIcon(imgBdc, "bon de commande", linkBdc));
@@ -75,18 +74,28 @@ const createFolder = () => {
 };
 
 const createIcon = (src, alt, link) => {
-  const iconDiv = document.createElement("div");
-  iconDiv.className = "icone rounded p-3";
-  iconDiv.style.display = "inline-block";
+  const iconDiv = document.createElement("button");
+  iconDiv.className = "rounded p-3 ";
+  iconDiv.style.margin = "5px"; // Apply margin
+  // Add event listener for mouseover
+  iconDiv.addEventListener("mouseover", () => {
+    iconDiv.classList.add("bg-dark", "text-white"); // Apply dark background color on hover
+  });
+
+  // Add event listener for mouseout
+  iconDiv.addEventListener("mouseout", () => {
+    iconDiv.classList.remove("bg-dark", "text-white"); // Remove background color on mouseout
+  });
 
   const img = document.createElement("img");
-  img.className = "icone rounded p-3 bg-white";
+  img.className = "rounded p-3";
   img.src = src;
   img.alt = alt;
   img.width = "130";
   img.height = "130";
   const title = document.createElement("p");
   title.innerHTML = alt;
+  title.className = "icon-title text-black";
 
   if (link) {
     iconDiv.addEventListener("click", () => {
@@ -98,56 +107,6 @@ const createIcon = (src, alt, link) => {
   iconDiv.appendChild(title);
 
   return iconDiv;
-};
-
-const openModal = (content) => {
-  const modal = document.createElement("div");
-  modal.className = "modal";
-
-  const modalContent = document.createElement("div");
-  modalContent.className = "modal-content";
-
-  const closeIcon = document.createElement("span");
-  closeIcon.className = "close";
-  closeIcon.innerHTML = "&times;";
-  closeIcon.addEventListener("click", () => {
-    closeModal(modal);
-  });
-
-  modalContent.innerHTML = content;
-  modalContent.appendChild(closeIcon);
-
-  // Find all the icons inside the modal
-  const icons = modalContent.getElementsByClassName("icone");
-
-  // Wrap each icon with an anchor tag
-  for (let i = 0; i < icons.length; i++) {
-    const icon = icons[i];
-    const link = icon.getAttribute("data-href"); // Get the link value from the data attribute
-
-    if (link) {
-      const anchor = document.createElement("a");
-      anchor.href = link;
-
-      // Replace the icon div with the anchor tag
-      icon.parentNode.replaceChild(anchor, icon);
-      anchor.appendChild(icon);
-    }
-  }
-
-  modal.appendChild(modalContent);
-  document.body.appendChild(modal);
-  modal.style.display = "block";
-
-  window.addEventListener("click", (event) => {
-    if (event.target === modal) {
-      closeModal(modal);
-    }
-  });
-};
-
-const closeModal = (modal) => {
-  document.body.removeChild(modal);
 };
 
 document.addEventListener("DOMContentLoaded", function () {
