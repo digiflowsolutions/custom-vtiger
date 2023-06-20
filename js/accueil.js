@@ -76,15 +76,14 @@ const createFolder = () => {
 const createIcon = (src, alt, link) => {
   const iconDiv = document.createElement("button");
   iconDiv.className = "rounded p-3 ";
-  iconDiv.style.margin = "5px"; // Apply margin
-  // Add event listener for mouseover
+  iconDiv.style.margin = "5px";
+
   iconDiv.addEventListener("mouseover", () => {
-    iconDiv.classList.add("bg-dark", "text-white"); // Apply dark background color on hover
+    iconDiv.classList.add("bg-dark", "text-white");
   });
 
-  // Add event listener for mouseout
   iconDiv.addEventListener("mouseout", () => {
-    iconDiv.classList.remove("bg-dark", "text-white"); // Remove background color on mouseout
+    iconDiv.classList.remove("bg-dark", "text-white");
   });
 
   const img = document.createElement("img");
