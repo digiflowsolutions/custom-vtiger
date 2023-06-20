@@ -6,7 +6,7 @@ fetch("data/contacts.json")
 
     const searchBar = document.createElement("input");
     searchBar.setAttribute("type", "text");
-    searchBar.setAttribute("placeholder", "Search");
+    searchBar.setAttribute("placeholder", "Rechercher");
     searchBar.classList.add("form-control", "mb-3");
     contactsContainer.appendChild(searchBar);
 
