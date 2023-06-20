@@ -16,3 +16,7 @@ body {
 header {
   margin-bottom: 30px;
 }
+
+a {
+  font-weight: bold;
+}

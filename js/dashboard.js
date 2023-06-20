@@ -4,20 +4,19 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       const contactsCount = data.length;
 
-      // Fetch comptes data (assuming you have a similar data retrieval mechanism)
       fetch("data/comptes.json")
         .then((response) => response.json())
         .then((data) => {
           const comptesCount = data.length;
 
-          // Create a chart canvas element
+          // Création du chart element
           const canvas = document.createElement("canvas");
           canvas.id = "chart";
 
-          // Append the chart canvas to the container
+          // Append chart canvas vers container
           document.getElementById("chart-container").appendChild(canvas);
 
-          // Create a bar chart
+          // bar chart
           new Chart(canvas, {
             type: "bar",
             data: {
@@ -84,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },
           });
         })
-        .catch((error) => console.error("Error fetching comptes:", error));
+        .catch((error) => console.error("Erreur API comptes:", error));
     })
-    .catch((error) => console.error("Error fetching contacts:", error));
+    .catch((error) => console.error("Erreur API contacts:", error));
 });

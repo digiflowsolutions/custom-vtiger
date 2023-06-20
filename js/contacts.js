@@ -1,10 +1,9 @@
 fetch("data/contacts.json")
   .then((response) => response.json())
   .then((data) => {
-    data.sort((a, b) => a.last_name.localeCompare(b.last_name));
+    data.sort((a, b) => a.lastname.localeCompare(b.lastname));
     const contactsContainer = document.getElementById("contacts-container");
 
-    // Create the search bar
     const searchBar = document.createElement("input");
     searchBar.setAttribute("type", "text");
     searchBar.setAttribute("placeholder", "Search");
@@ -20,17 +19,17 @@ fetch("data/contacts.json")
       "g-4"
     );
 
-    let filteredData = data; // Initially, set the filteredData to all contacts
+    let filteredData = data;
 
     const renderContacts = () => {
-      boardList.innerHTML = ""; // Clear the existing contacts
+      boardList.innerHTML = "";
 
       filteredData.forEach((contact) => {
         const cardColumn = document.createElement("div");
         cardColumn.classList.add("col", "d-flex", "justify-content-center");
 
         const link = document.createElement("a");
-        link.href = `contact.html?id=${contact.id}`; // Link to contact.html with contact ID
+        link.href = `contact.html?id=${contact.contactid}`;
         link.classList.add(
           "list-group-item",
           "text-decoration-none",
@@ -39,37 +38,36 @@ fetch("data/contacts.json")
 
         const card = document.createElement("div");
         card.classList.add("card");
-        card.style.maxWidth = "300px"; // Set maximum width for the card
-        card.style.margin = "auto"; // Add margin: auto to center the card
-
+        card.style.maxWidth = "300px";
+        card.style.margin = "auto";
         const imageContainer = document.createElement("div");
         imageContainer.classList.add("card-img-container");
         imageContainer.style.width = "100%";
         imageContainer.style.height = "200px";
-        imageContainer.style.overflow = "hidden"; // Hide any overflowing content
+        imageContainer.style.overflow = "hidden";
 
         const image = document.createElement("img");
         image.src = contact.picture;
         image.classList.add("card-img");
         image.alt = "Profile Picture";
-        image.style.width = "100%"; // Make the image responsive
+        image.style.width = "100%";
 
         const cardBody = document.createElement("div");
         cardBody.classList.add("card-body");
 
         const title = document.createElement("h5");
         title.classList.add("card-title");
-        title.innerHTML = `${contact.last_name.toUpperCase()} ${
-          contact.first_name
-        }`;
+        title.innerHTML = `${
+          contact.salutation
+        } ${contact.lastname.toUpperCase()} ${contact.firstname}`;
 
         const phone = document.createElement("p");
         phone.classList.add("card-text");
-        phone.innerHTML = contact.mobile_phone;
+        phone.innerHTML = contact.phone;
 
         const email = document.createElement("p");
         email.classList.add("card-text");
-        email.innerHTML = contact.email_main;
+        email.innerHTML = contact.email;
 
         cardBody.appendChild(title);
         cardBody.appendChild(phone);
@@ -88,20 +86,19 @@ fetch("data/contacts.json")
     const filterContacts = (event) => {
       const searchTerm = event.target.value.toLowerCase();
 
-      // Filter the contacts based on the search term
       filteredData = data.filter(
         (contact) =>
-          contact.last_name.toLowerCase().includes(searchTerm) ||
-          contact.first_name.toLowerCase().includes(searchTerm)
+          contact.lastname.toLowerCase().includes(searchTerm) ||
+          contact.firstname.toLowerCase().includes(searchTerm)
       );
 
-      renderContacts(); // Render the filtered contacts
+      renderContacts();
     };
 
     searchBar.addEventListener("input", filterContacts);
 
-    renderContacts(); // Render all contacts initially
+    renderContacts();
 
     contactsContainer.appendChild(boardList);
   })
-  .catch((error) => console.error("Error:", error));
+  .catch((error) => console.error("Erreur:", error));
