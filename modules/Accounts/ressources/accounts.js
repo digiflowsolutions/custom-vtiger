@@ -29,7 +29,7 @@ fetch("data/comptes.json")
         cardColumn.classList.add("col", "d-flex", "justify-content-center");
 
         const link = document.createElement("a");
-        link.href = `compte.html?id=${compte.accountid}`;
+        link.href = `account.html?id=${compte.accountid}`;
         link.classList.add(
           "list-group-item",
           "text-decoration-none",
@@ -86,7 +86,7 @@ fetch("data/comptes.json")
       const searchTerm = event.target.value.toLowerCase();
 
       filteredData = data.filter((compte) =>
-        compte.name.toLowerCase().includes(searchTerm)
+        compte.accountname.toLowerCase().includes(searchTerm)
       );
 
       renderComptes();
