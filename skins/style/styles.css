@@ -79,11 +79,12 @@ nav {
   bottom: 160px;
   left: 0;
   right: 0;
-  width: fit-content;
+  width: fit-content !important;
+  height: auto;
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 20px;
-  padding: 10px 30px;
-  color: white;
+  padding: 20px 30px !important;
+  color: white !important;
   margin: auto;
   font-size: 25px;
   font-weight: bold;
