@@ -1,12 +1,14 @@
+//**** ACCUEIL VIEW ****/
+
 // const imgVente = "../../../skins/images/icone-vente.png";
-const imgContact = "/v7/skins/images/icone-contacts.png";
-const imgCompte = "/v7/skins/images/icone-comptes.png";
-const imgAffaire = "/v7/skins/images/icone-affaires.png";
-const imgDevis = "/v7/skins/images/icone-devis.png";
-const imgBdc = "/v7/skins/images/icone-bdc.png";
-const imgBdl = "/v7/skins/images/icone-bdl.png";
-const imgFactures = "/v7/skins/images/icone-factures.png";
-const imgReglements = "/v7/skins/images/icone-reglement.png";
+const imgContact = "/skins/images/icone-contacts.png";
+const imgCompte = "/skins/images/icone-comptes.png";
+const imgAffaire = "/skins/images/icone-affaires.png";
+const imgDevis = "/skins/images/icone-devis.png";
+const imgBdc = "/skins/images/icone-bdc.png";
+const imgBdl = "/skins/images/icone-bdl.png";
+// const imgFactures = "/skins/images/icone-factures.png";
+const imgReglements = "/skins/images/icone-reglement.png";
 
 const linkContacts = "/contacts.html";
 const linkComptes = "/accounts.html";

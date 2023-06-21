@@ -45,10 +45,9 @@ ul.className = "navbar-nav ml-auto";
 
 // Create the list items
 var listItems = [
-  { text: "Accueil", href: "/" },
-  { text: "Dashboard", href: "/dashboard.html" },
+  { text: "Dashboard", href: "/" },
   { text: "Contacts", href: "/contacts.html" },
-  { text: "Comptes", href: "/accounts.html" },
+  { text: "Comptes", href: "/comptes.html" },
 ];
 
 // Create the list item elements

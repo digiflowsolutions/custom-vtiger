@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./skins/style/styles.css" />
+    <link rel="stylesheet" href="/modules/DockNavbar/docknav.css" />
   </head>
 
   <body>
@@ -15,16 +16,36 @@
     <header id="navbarPartial"></header>
 
     <!-- Main content -->
+    <!-- Main content -->
     <main>
-      <div id="accueil"></div>
+      <div id="chart-container">
+        <div
+          class="d-flex justify-content-center align-items-center m-auto"
+          style="width: 500px; height: 500px">
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
     </main>
+
+    <!-- DockNavbar partial -->
+    <div id="dockNavbarPartial"></div>
 
     <!-- Footer partial -->
     <footer id="footerPartial"></footer>
 
-    <script src="modules/Navbar/ressources/navbar.js"></script>
-    <script src="modules/Footer/ressources/footer.js"></script>
+    <!-- *** Modules *** -->
+    <!-- navbar -->
+    <script src="modules/Navbar/navbarView.js"></script>
 
-    <script src="modules/Accueil/ressources/accueilView.js"></script>
+    <!-- main -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/modules/Dashboard/dashboardView.js"></script>
+
+    <!-- docknav -->
+    <script src="/modules/DockNavbar/dockNavView.js"></script>
+    <script src="/modules/DockNavbar/app.js" defer></script>
+
+    <!-- footer -->
+    <script src="modules/Footer/footerView.js"></script>
   </body>
 </html>

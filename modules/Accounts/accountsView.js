@@ -29,7 +29,7 @@ fetch("data/comptes.json")
         cardColumn.classList.add("col", "d-flex", "justify-content-center");
 
         const link = document.createElement("a");
-        link.href = `account.html?id=${compte.accountid}`;
+        link.href = `compte.html?id=${compte.accountid}`;
         link.classList.add(
           "list-group-item",
           "text-decoration-none",

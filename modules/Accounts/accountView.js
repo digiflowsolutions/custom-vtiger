@@ -8,7 +8,7 @@ fetch("data/comptes.json")
 
     if (compte) {
       const backButton = document.createElement("a");
-      backButton.href = "/accounts.html";
+      backButton.href = "/comptes.html";
       backButton.textContent = "Retour";
       backButton.classList.add("arrow-link");
 
