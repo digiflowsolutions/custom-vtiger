@@ -147,6 +147,15 @@ fetch("data/comptes.json")
           link.appendChild(card);
           cardColumn.appendChild(link);
           boardList.appendChild(cardColumn);
+
+          // Add shadow effect on card hover
+          link.addEventListener("mouseenter", () => {
+            link.classList.add("link-hover-shadow");
+          });
+
+          link.addEventListener("mouseleave", () => {
+            link.classList.remove("link-hover-shadow");
+          });
         } else {
           const row = document.createElement("tr");
           const link = document.createElement("a");

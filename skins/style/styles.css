@@ -151,3 +151,6 @@ nav {
   width: 100%;
   table-layout: fixed;
 }
+.link-hover-shadow {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
