@@ -115,6 +115,7 @@ nav {
 .comptes-board {
   height: 800px; /* Adjust the height as needed */
   overflow-y: scroll;
+  row-gap: 30px;
 }
 
 .table-container {

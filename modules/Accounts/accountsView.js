@@ -46,10 +46,17 @@ fetch("data/comptes.json")
     const tableBody = document.createElement("tbody");
 
     const tableHeaders = ["accountname", "phone", "email1"];
+    const columnAliases = {
+      accountname: "Nom", // Alias for "accountname" column
+      phone: "Téléphone",
+      email1: "Email",
+    };
 
     tableHeaders.forEach((headerText) => {
       const headerCell = document.createElement("th");
-      headerCell.textContent = headerText;
+
+      const headerTextAlias = columnAliases[headerText] || headerText;
+      headerCell.textContent = headerTextAlias;
 
       const arrowUp = document.createElement("span");
       arrowUp.innerHTML = "&#9650;";
@@ -76,6 +83,8 @@ fetch("data/comptes.json")
 
     let isCardView = true;
     let filteredData = data;
+    let sortedColumn = null;
+    let sortOrder = "asc";
 
     const renderComptes = () => {
       boardList.innerHTML = "";
@@ -98,6 +107,7 @@ fetch("data/comptes.json")
           card.classList.add("card");
           card.style.maxWidth = "300px";
           card.style.margin = "auto";
+          card.style.border = "none";
 
           const imageContainer = document.createElement("div");
           imageContainer.classList.add("card-img-container");
@@ -152,18 +162,11 @@ fetch("data/comptes.json")
 
           row.appendChild(link);
 
-          const nameCell = document.createElement("td");
-          nameCell.textContent = compte.accountname;
-
-          const phoneCell = document.createElement("td");
-          phoneCell.textContent = compte.phone;
-
-          const emailCell = document.createElement("td");
-          emailCell.textContent = compte.email1;
-
-          link.appendChild(nameCell);
-          row.appendChild(phoneCell);
-          row.appendChild(emailCell);
+          tableHeaders.forEach((headerText) => {
+            const cell = document.createElement("td");
+            cell.textContent = compte[headerText];
+            link.appendChild(cell);
+          });
 
           tableBody.appendChild(row);
         }
@@ -177,7 +180,17 @@ fetch("data/comptes.json")
       }
     };
 
-    const sortData = (sortBy, sortOrder) => {
+    const sortData = (sortBy, newSortOrder) => {
+      if (sortedColumn === sortBy) {
+        // Same column clicked, reverse the sort order
+        sortOrder = newSortOrder === "asc" ? "desc" : "asc";
+      } else {
+        // Different column clicked, set default sort order
+        sortOrder = newSortOrder;
+      }
+
+      sortedColumn = sortBy;
+
       let sortedData = [];
 
       if (sortOrder === "asc") {
