@@ -169,9 +169,11 @@ fetch("data/comptes.json")
         }
       });
 
-      //permet de ne pas scroller après les cards
+      // Permet de ne pas scroller après les cards
       if (isCardView) {
-        tableContainer.style.height = "0px";
+        tableList.parentElement.style.overflow = "hidden";
+      } else {
+        tableList.parentElement.style.overflow = "auto";
       }
     };
 
@@ -219,14 +221,6 @@ fetch("data/comptes.json")
     });
 
     renderComptes();
-
-    const tableContainer = document.createElement("div");
-    tableContainer.classList.add("table-container");
-    tableContainer.appendChild(tableList);
-    listContainer.appendChild(tableContainer);
-
-    // Add a CSS class to the table container for styling
-    tableContainer.classList.add("scrollable");
 
     comptesContainer.appendChild(listContainer);
   })
