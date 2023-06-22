@@ -97,6 +97,9 @@ nav {
 /* LISTS / CARDS */
 .arrow {
   cursor: pointer;
+  /* width: 20px;
+  height: 20px;
+  color: #dc3545; */
 }
 #comptes-container {
   display: flex;

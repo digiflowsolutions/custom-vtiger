@@ -47,7 +47,7 @@ fetch("data/comptes.json")
 
     const tableHeaders = ["accountname", "phone", "email1"];
     const columnAliases = {
-      accountname: "Nom", // Alias for "accountname" column
+      accountname: "Nom",
       phone: "Téléphone",
       email1: "Email",
     };
@@ -59,17 +59,24 @@ fetch("data/comptes.json")
       headerCell.textContent = headerTextAlias;
 
       const arrowUp = document.createElement("span");
-      arrowUp.innerHTML = "&#9650;";
+      arrowUp.innerHTML = "▲";
       arrowUp.classList.add("arrow", "up");
+      arrowUp.style.display = "none";
+
       arrowUp.addEventListener("click", () => {
         sortData(headerText, "asc");
+        arrowUp.style.display = "none";
+        arrowDown.style.display = "";
       });
 
       const arrowDown = document.createElement("span");
-      arrowDown.innerHTML = "&#9660;";
+      arrowDown.innerHTML = "▼";
       arrowDown.classList.add("arrow", "down");
+
       arrowDown.addEventListener("click", () => {
         sortData(headerText, "desc");
+        arrowDown.style.display = "none";
+        arrowUp.style.display = "";
       });
 
       headerCell.appendChild(arrowUp);
@@ -148,7 +155,6 @@ fetch("data/comptes.json")
           cardColumn.appendChild(link);
           boardList.appendChild(cardColumn);
 
-          // Add shadow effect on card hover
           link.addEventListener("mouseenter", () => {
             link.classList.add("link-hover-shadow");
           });
@@ -161,13 +167,13 @@ fetch("data/comptes.json")
           const link = document.createElement("a");
           link.href = `compte.html?id=${compte.accountid}`;
           link.classList.add("text-decoration-none", "text-muted");
-          link.style.display = "contents"; // Make the link behave like its content is part of the row
+          link.style.display = "contents";
 
           row.addEventListener("click", () => {
-            window.location.href = link.href; // Redirect to the link URL when the row is clicked
+            window.location.href = link.href;
           });
 
-          row.style.cursor = "pointer"; // Show cursor pointer on the row
+          row.style.cursor = "pointer";
 
           row.appendChild(link);
 
@@ -181,7 +187,6 @@ fetch("data/comptes.json")
         }
       });
 
-      // Permet de ne pas scroller après les cards
       if (isCardView) {
         tableList.parentElement.style.overflow = "hidden";
       } else {
@@ -191,10 +196,8 @@ fetch("data/comptes.json")
 
     const sortData = (sortBy, newSortOrder) => {
       if (sortedColumn === sortBy) {
-        // Same column clicked, reverse the sort order
         sortOrder = newSortOrder === "asc" ? "desc" : "asc";
       } else {
-        // Different column clicked, set default sort order
         sortOrder = newSortOrder;
       }
 
