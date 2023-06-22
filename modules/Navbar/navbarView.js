@@ -79,3 +79,8 @@ header.appendChild(nav);
 
 // Append the header to the document body or any other desired parent element
 document.body.appendChild(header);
+
+// Add event listener to the toggler button
+togglerButton.addEventListener("click", function () {
+  collapseDiv.classList.toggle("show");
+});
