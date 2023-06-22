@@ -98,24 +98,55 @@ nav {
 .arrow {
   cursor: pointer;
 }
-
 #comptes-container {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  /* height: 100vh; */
   overflow: hidden;
 }
 
 .comptes-list-container {
   flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .comptes-board {
   height: 800px; /* Adjust the height as needed */
   overflow-y: scroll;
 }
+
 .table-container {
   height: 800px;
   overflow-y: scroll;
+}
+
+/* Add the following CSS to keep the search bar and toggle button fixed */
+.search-bar {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.toggle-button {
+  position: sticky;
+  top: 46px; /* Adjust the top value to match the height of the search bar */
+  background-color: #ffffff;
+  z-index: 1;
+  width: 200px; /* Set width to auto */
+}
+
+/* Add the following CSS to make tbody scrollable */
+.table-scrollable tbody {
+  display: block;
+  height: 800px; /* Adjust the height as needed */
+  overflow-y: scroll;
+}
+
+.table-scrollable tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
 }

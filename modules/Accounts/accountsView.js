@@ -16,7 +16,7 @@ fetch("data/comptes.json")
 
     const viewToggle = document.createElement("button");
     viewToggle.textContent = "Vue liste";
-    viewToggle.classList.add("btn", "btn-primary", "mb-3");
+    viewToggle.classList.add("btn", "btn-primary", "mb-3", "toggle-button");
     listContainer.appendChild(viewToggle);
 
     const boardList = document.createElement("div");
