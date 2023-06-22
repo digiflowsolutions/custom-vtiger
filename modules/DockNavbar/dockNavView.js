@@ -13,14 +13,14 @@ dock.className = "dock";
 dockWrapper.appendChild(dock);
 
 const iconNames = [
-  "contacts",
-  "comptes",
   "affaires",
   "campagnes",
+  "comptes",
+  "contacts",
   "dashboard",
   "facturation",
-  "stock",
   "gestion",
+  "stock",
   "vente",
 ];
 

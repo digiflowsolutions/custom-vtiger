@@ -1,6 +1,5 @@
 body {
   padding: 50px;
-  /* background-color: #c7d8de !important; */
 }
 
 .container {
@@ -46,18 +45,16 @@ nav {
 }
 
 .dock-icon {
-  cursor: pointer;
-  width: 64px;
-  height: 64px;
-  color: #fff;
+  width: 74px;
+  height: 74px;
   display: flex;
   align-items: center;
   justify-content: center;
   transform-origin: center bottom;
   background: transparent;
   border: none;
-  padding: 5px;
-  margin: 0;
+  border-radius: 50%;
+  margin: 0px;
 }
 
 .dock-icon img {
@@ -95,4 +92,34 @@ nav {
 
 .dock-modal.show {
   opacity: 1;
+}
+
+/* LISTS / CARDS */
+.arrow {
+  cursor: pointer;
+}
+
+#comptes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* height: 100vh; */
+  overflow: hidden;
+}
+
+.comptes-list-container {
+  flex: 0 0 auto;
+}
+
+.comptes-board {
+  height: 800px; /* Adjust the height as needed */
+  overflow-y: scroll;
+}
+.table-container {
+  height: 800px;
+  overflow-y: scroll;
+}
+
+.hidden {
+  height: 0px !important;
 }
