@@ -20,7 +20,7 @@
     "employees": 57,
     "emailoptout": true,
     "notify_owner": true,
-    "isconvertedfromlead": false,
+    "isconvertedfromlead": true,
     "tags": ["new", "local", "serious"]
   },
   {

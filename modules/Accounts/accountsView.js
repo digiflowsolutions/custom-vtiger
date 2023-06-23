@@ -8,24 +8,42 @@ fetch("data/vtiger_account.json")
     listContainer.classList.add("comptes-list-container");
     comptesContainer.appendChild(listContainer);
 
-    listContainer.innerHTML = `
-      <input type="text" placeholder="Rechercher" class="form-control mb-3">
-      <button class="btn btn-primary mb-3 toggle-button">Vue liste</button>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 comptes-board"></div>
-      <table class="table table-striped mb-3 table-scrollable" style="display: none;">
-        <thead>
-          <tr></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    `;
+    const searchBar = document.createElement("input");
+    searchBar.setAttribute("type", "text");
+    searchBar.setAttribute("placeholder", "Rechercher");
+    searchBar.classList.add("form-control", "mb-3");
+    listContainer.appendChild(searchBar);
 
-    const searchBar = listContainer.querySelector("input");
-    const viewToggle = listContainer.querySelector("button");
-    const boardList = listContainer.querySelector(".comptes-board");
-    const tableList = listContainer.querySelector("table");
-    const tableHeaderRow = tableList.querySelector("thead tr");
-    const tableBody = tableList.querySelector("tbody");
+    const viewToggle = document.createElement("button");
+    viewToggle.textContent = "Vue liste";
+    viewToggle.classList.add("btn", "btn-primary", "mb-3", "toggle-button");
+    listContainer.appendChild(viewToggle);
+
+    const boardList = document.createElement("div");
+    boardList.classList.add(
+      "row",
+      "row-cols-1",
+      "row-cols-md-2",
+      "row-cols-lg-4",
+      "g-4",
+      "comptes-board"
+    );
+    listContainer.appendChild(boardList);
+
+    const tableList = document.createElement("table");
+    tableList.classList.add(
+      "table",
+      "table-striped",
+      "mb-3",
+      "table-scrollable"
+    );
+    tableList.style.display = "none";
+
+    listContainer.appendChild(tableList);
+
+    const tableHeader = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+    const tableBody = document.createElement("tbody");
 
     const tableHeaders = ["accountname", "phone", "email1"];
     const columnAliases = {
@@ -35,19 +53,40 @@ fetch("data/vtiger_account.json")
     };
 
     tableHeaders.forEach((headerText) => {
-      const headerTextAlias = columnAliases[headerText] || headerText;
       const headerCell = document.createElement("th");
-      headerCell.innerHTML = `${headerTextAlias}<span class="arrow up" style="display: none;">▲</span><span class="arrow down">▼</span>`;
-      headerCell.addEventListener("click", () => {
-        const arrowUp = headerCell.querySelector(".arrow.up");
-        const arrowDown = headerCell.querySelector(".arrow.down");
-        const sortOrder = arrowUp.style.display === "none" ? "asc" : "desc";
-        sortData(headerText, sortOrder);
-        arrowUp.style.display = sortOrder === "asc" ? "none" : "";
-        arrowDown.style.display = sortOrder === "desc" ? "none" : "";
+
+      const headerTextAlias = columnAliases[headerText] || headerText;
+      headerCell.textContent = headerTextAlias;
+
+      const arrowUp = document.createElement("span");
+      arrowUp.innerHTML = "▲";
+      arrowUp.classList.add("arrow", "up");
+      arrowUp.style.display = "none";
+
+      arrowUp.addEventListener("click", () => {
+        sortData(headerText, "asc");
+        arrowUp.style.display = "none";
+        arrowDown.style.display = "";
       });
-      tableHeaderRow.appendChild(headerCell);
+
+      const arrowDown = document.createElement("span");
+      arrowDown.innerHTML = "▼";
+      arrowDown.classList.add("arrow", "down");
+
+      arrowDown.addEventListener("click", () => {
+        sortData(headerText, "desc");
+        arrowDown.style.display = "none";
+        arrowUp.style.display = "";
+      });
+
+      headerCell.appendChild(arrowUp);
+      headerCell.appendChild(arrowDown);
+      headerRow.appendChild(headerCell);
     });
+
+    tableHeader.appendChild(headerRow);
+    tableList.appendChild(tableHeader);
+    tableList.appendChild(tableBody);
 
     let isCardView = true;
     let filteredData = data;
