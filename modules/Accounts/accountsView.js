@@ -1,4 +1,4 @@
-fetch("data/comptes.json")
+fetch("data/vtiger_account.json")
   .then((response) => response.json())
   .then((data) => {
     data.sort((a, b) => a.accountname.localeCompare(b.accountname));
@@ -123,7 +123,7 @@ fetch("data/comptes.json")
           imageContainer.style.overflow = "hidden";
 
           const image = document.createElement("img");
-          image.src = compte.picture;
+          image.src = "/skins/images/icone-account.png";
           image.classList.add("card-img");
           image.alt = "Profil";
           image.style.width = "100%";
