@@ -26,17 +26,19 @@ fetch("data/vtiger_account.json")
       const row4 = document.createElement("div");
       row1.classList.add("row");
 
-      const row1Colum1 = document.createElement("div");
-      row1Colum1.classList.add("col-md-4");
-      const row1Colum2 = document.createElement("div");
-      row1Colum2.classList.add("col-md-5", "d-flex");
-      const row1Colum3 = document.createElement("div");
-      row1Colum3.classList.add("col-md-3");
+      const row1Column1 = document.createElement("div");
+      row1Column1.classList.add("col-md-4");
+      const row1Column2 = document.createElement("div");
+      row1Column2.classList.add("col-md-5", "d-flex");
+      const row1Column3 = document.createElement("div");
+      row1Column3.classList.add("col-md-3");
 
-      // const badge = document.createElement("span");
-      // badge.classList.add("badge", "badge-pill", "badge-info");
-      // let value = compte.isconvertedfromlead;
-      // badge.textContent = value ? "converti depuis un prospect" : "";
+      const row2Column1 = document.createElement("div");
+      row2Column1.classList.add("col-md-6");
+      const row2Column2 = document.createElement("div");
+      row2Column2.classList.add("col-md-6");
+
+      // ROW 1 COLUMN 1
 
       const AvatarDiv = document.createElement("div");
       AvatarDiv.classList.add(
@@ -46,6 +48,7 @@ fetch("data/vtiger_account.json")
         "align-items-center"
       );
 
+      //account_no
       const accountNo = document.createElement("span");
       accountNo.classList.add(
         "account_no",
@@ -61,6 +64,7 @@ fetch("data/vtiger_account.json")
       accountNo.style.height = "20px"; // Adjust the height as needed
       accountNo.textContent = compte.account_no;
 
+      // account picture
       const image = document.createElement("img");
       image.src = "/skins/images/icone-account.png";
       image.classList.add("rounded", "p-3");
@@ -68,6 +72,7 @@ fetch("data/vtiger_account.json")
       image.style.maxWidth = "250px";
       image.style.maxHeight = "250px";
 
+      // ROW 1 COLUMN 2
       const accountTitle = document.createElement("div");
       accountTitle.classList.add(
         "m-auto",
@@ -77,6 +82,7 @@ fetch("data/vtiger_account.json")
         "flex-column"
       );
 
+      // accountname
       const accountName = document.createElement("h3");
       accountName.classList.add("accountname");
       accountName.textContent = compte.accountname;
@@ -88,30 +94,58 @@ fetch("data/vtiger_account.json")
       accountIndustry.classList.add("account_industry");
       accountIndustry.textContent = compte.industry;
 
-      const accountConvertedFromProspect = document.createElement("span");
-      accountConvertedFromProspect.classList.add(
+      // isconvertedfromlead
+      const accountConvertedFromLead = document.createElement("span");
+      accountConvertedFromLead.classList.add(
         "isconvertedfromlead",
         "bg-success",
         "p-2",
         "rounded",
         "text-white"
       );
-      accountConvertedFromProspect.textContent = compte.isconvertedfromlead
-        ? "converti d'un prospect"
-        : "";
 
-      // const phone1Link = document.createElement("a");
-      // phone1Link.href = `tel:${compte.phone}`;
-      // phone1Link.textContent = compte.phone;
-      // phone1Link.target = "_blank";
-      // cardText.textContent += "Téléphone: " + phone1Link.outerHTML + "<br>";
+      if (compte.isconvertedfromlead) {
+        accountConvertedFromLead.textContent = "converti d'un prospect";
+      } else {
+        accountConvertedFromLead.classList.remove("p-2");
+      }
 
-      // const phone2Link = document.createElement("a");
-      // phone2Link.href = `tel:${compte.otherphone}`;
-      // phone2Link.textContent = compte.otherphone;
-      // phone2Link.target = "_blank";
-      // cardText.textContent +=
-      //   "Téléphone secondaire: " + phone2Link.outerHTML + "<br>";
+      // tags
+      const containerTags = document.createElement("div"); //
+
+      compte.tags.map((tag) => {
+        const badge = document.createElement("span");
+        badge.classList.add("badge", "badge-info", "mr-2", "mt-3");
+        badge.textContent = tag;
+        containerTags.appendChild(badge);
+      });
+
+      // ROW 2 COLUMN 1
+
+      // phone + otherphone
+      const emojiPhone = document.createElement("h3");
+      emojiPhone.classList.add("m-0", "mr-1");
+      emojiPhone.textContent = `📱`;
+
+      const phone1Link = document.createElement("a");
+      phone1Link.classList.add("mr-1", "text-reset");
+      phone1Link.href = `tel:${compte.phone}`;
+      phone1Link.textContent = ` ${compte.phone} `;
+      phone1Link.target = "_blank";
+
+      const phone2Link = document.createElement("a");
+      phone2Link.classList.add("mr-1", "text-reset");
+
+      phone2Link.href = `tel:${compte.otherphone}`;
+      phone2Link.textContent = `/ ${compte.otherphone}`;
+      phone2Link.target = "_blank";
+
+      const phone = document.createElement("div");
+      phone.classList.add("d-flex", "mt-5", "align-items-center");
+
+      compte.phone || compte.otherphone ? phone.appendChild(emojiPhone) : "";
+      compte.phone ? phone.appendChild(phone1Link) : "";
+      compte.otherphone ? phone.appendChild(phone2Link) : "";
 
       // const email1Link = document.createElement("a");
       // email1Link.href = `mailto:${compte.email1}`;
@@ -173,6 +207,18 @@ fetch("data/vtiger_account.json")
 
       // card.appendChild(badge);
 
+      // <div class="row no-gutters align-items-center">
+      //   <div class="col mr-2">
+      //     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+      //       Earnings (Annual)
+      //     </div>
+      //     <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+      //   </div>
+      //   <div class="col-auto">
+      //     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+      //   </div>
+      // </div>;
+
       AvatarDiv.appendChild(accountNo);
       AvatarDiv.appendChild(image);
 
@@ -180,13 +226,18 @@ fetch("data/vtiger_account.json")
       accountTitle.appendChild(accountType);
       accountTitle.appendChild(accountIndustry);
 
-      row1Colum1.appendChild(AvatarDiv);
-      row1Colum2.appendChild(accountTitle);
-      row1Colum3.appendChild(accountConvertedFromProspect);
+      row1Column1.appendChild(AvatarDiv);
+      row1Column2.appendChild(accountTitle);
+      row1Column3.appendChild(accountConvertedFromLead);
+      row1Column3.appendChild(containerTags);
 
-      row1.appendChild(row1Colum1);
-      row1.appendChild(row1Colum2);
-      row1.appendChild(row1Colum3);
+      row2Column1.appendChild(phone);
+
+      row1.appendChild(row1Column1);
+      row1.appendChild(row1Column2);
+      row1.appendChild(row1Column3);
+
+      row2.appendChild(row2Column1);
 
       card.appendChild(backButton);
       card.appendChild(row1);
