@@ -241,11 +241,95 @@ fetch("data/vtiger_account.json")
       compte.website && websiteUrl.appendChild(websiteLink);
       compte.website && website.appendChild(websiteUrl);
 
-      // const employees = document.createElement("p");
-      // employees.textContent = "Employees: " + compte.employees;
+      // Employees
 
-      // const annualRevenue = document.createElement("p");
-      // annualRevenue.textContent = "Annual Revenue: " + compte.annualrevenue;
+      const cardContainerEmployees = document.createElement("div");
+      cardContainerEmployees.className = "col-xl-6 col-md-6 mb-3";
+
+      const cardEmployee = document.createElement("div");
+      cardEmployee.className = "card shadow h-100 py-2 pl-3";
+      cardEmployee.style.borderLeft = "10px solid green";
+
+      const cardEmployeeBody = document.createElement("div");
+      cardEmployeeBody.className = "card-body";
+
+      const cardEmployeeRow = document.createElement("div");
+      cardEmployeeRow.className = "row no-gutters align-items-center";
+
+      const cardEmployeeColumnLeft = document.createElement("div");
+      cardEmployeeColumnLeft.className = "col mr-2";
+
+      const divTextEmployee = document.createElement("div");
+      divTextEmployee.className =
+        "text-xs font-weight-bold text-uppercase mb-1";
+      divTextEmployee.textContent = "Employés";
+
+      const divH5Employee = document.createElement("div");
+      divH5Employee.className = "h5 mb-0 font-weight-bold text-gray-800";
+      divH5Employee.textContent = compte.employees;
+
+      const divColAutoEmployee = document.createElement("div");
+      divColAutoEmployee.className = "col-auto";
+
+      const iElementEmployee = document.createElement("i");
+      iElementEmployee.className = "fas fa-users fa-2x text-gray-300";
+
+      cardEmployeeColumnLeft.appendChild(divTextEmployee);
+      cardEmployeeColumnLeft.appendChild(divH5Employee);
+
+      cardEmployeeRow.appendChild(cardEmployeeColumnLeft);
+      cardEmployeeRow.appendChild(divColAutoEmployee);
+      cardEmployeeBody.appendChild(cardEmployeeRow);
+      divColAutoEmployee.appendChild(iElementEmployee);
+
+      cardEmployee.appendChild(cardEmployeeBody);
+
+      cardContainerEmployees.appendChild(cardEmployee);
+
+      // ANNUAL REVENUE
+      const cardContainerRevenues = document.createElement("div");
+      cardContainerRevenues.className = "col-xl-6 col-md-6 mb-3";
+
+      const cardRevenue = document.createElement("div");
+      cardRevenue.className = "card shadow h-100 py-2 pl-3";
+      cardRevenue.style.borderLeft = "10px solid red";
+
+      const cardRevenueBody = document.createElement("div");
+      cardRevenueBody.className = "card-body";
+
+      const cardRevenueRow = document.createElement("div");
+      cardRevenueRow.className = "row no-gutters align-items-center";
+
+      const cardRevenueColumnLeft = document.createElement("div");
+      cardRevenueColumnLeft.className = "col mr-2";
+
+      const divTextRevenue = document.createElement("div");
+      divTextRevenue.className = "text-xs font-weight-bold text-uppercase mb-1";
+      divTextRevenue.textContent = "Revenu annuel";
+
+      const divH5Revenue = document.createElement("div");
+      divH5Revenue.className = "h5 mb-0 font-weight-bold text-gray-800";
+      divH5Revenue.textContent = compte.annualrevenue;
+
+      const divColAutoRevenue = document.createElement("div");
+      divColAutoRevenue.className = "col-auto";
+
+      const iElementRevenue = document.createElement("i");
+      iElementRevenue.className = "fas fa-euro-sign fa-2x text-gray-300";
+
+      cardRevenueColumnLeft.appendChild(divTextRevenue);
+      cardRevenueColumnLeft.appendChild(divH5Revenue);
+
+      cardRevenueRow.appendChild(cardRevenueColumnLeft);
+      cardRevenueRow.appendChild(divColAutoRevenue);
+      cardRevenueBody.appendChild(cardRevenueRow);
+      divColAutoRevenue.appendChild(iElementRevenue);
+
+      cardRevenue.appendChild(cardRevenueBody);
+
+      cardContainerRevenues.appendChild(cardRevenue);
+
+      // RATINGS
 
       // const rating = document.createElement("p");
       // rating.textContent = "Rating: " + compte.rating;
@@ -276,18 +360,6 @@ fetch("data/vtiger_account.json")
 
       // card.appendChild(badge);
 
-      // <div class="row no-gutters align-items-center">
-      //   <div class="col mr-2">
-      //     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-      //       Earnings (Annual)
-      //     </div>
-      //     <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-      //   </div>
-      //   <div class="col-auto">
-      //     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-      //   </div>
-      // </div>;
-
       AvatarDiv.appendChild(accountNo);
       AvatarDiv.appendChild(image);
 
@@ -305,20 +377,21 @@ fetch("data/vtiger_account.json")
       row2Column1.appendChild(fax);
       row2Column1.appendChild(website);
 
+      row2Column2.appendChild(cardContainerEmployees);
+      row2Column2.appendChild(cardContainerRevenues);
+
       row1.appendChild(row1Column1);
       row1.appendChild(row1Column2);
       row1.appendChild(row1Column3);
 
-      row2.appendChild(row2Column1);
+      row1.appendChild(row2Column1);
+      row1.appendChild(row2Column2);
 
       card.appendChild(backButton);
       card.appendChild(row1);
       card.appendChild(row2);
       card.appendChild(row3);
       card.appendChild(row4);
-      // card.appendChild(cardBody);
-
-      // document.getElementById("compte-details").appendChild(backButton);
 
       compteDetails.appendChild(card);
     } else {
