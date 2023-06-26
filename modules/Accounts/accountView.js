@@ -27,16 +27,39 @@ fetch("data/vtiger_account.json")
       row1.classList.add("row");
 
       const row1Column1 = document.createElement("div");
-      row1Column1.classList.add("col-md-4");
+      row1Column1.classList.add(
+        "col-md-4",
+        "d-flex",
+        "justify-content-center",
+        "align-items-center"
+      );
       const row1Column2 = document.createElement("div");
-      row1Column2.classList.add("col-md-5", "d-flex");
+      row1Column2.classList.add(
+        "col-md-5",
+        "d-flex",
+        "justify-content-center",
+        "align-items-center"
+      );
       const row1Column3 = document.createElement("div");
       row1Column3.classList.add("col-md-3", "d-flex", "flex-column", "m-auto");
 
       const row2Column1 = document.createElement("div");
-      row2Column1.classList.add("col-md-6");
+      row2Column1.classList.add(
+        "d-flex",
+        "flex-column",
+        "col-md-4",
+        "justify-content-center",
+        "align-items-center"
+      );
       const row2Column2 = document.createElement("div");
-      row2Column2.classList.add("col-md-6");
+      row2Column2.classList.add(
+        "col-md-8",
+        "d-flex",
+        "flex-column",
+        "justify-content-center",
+        "align-items-center",
+        "m-auto"
+      );
 
       // ROW 1 COLUMN 1
 
@@ -52,17 +75,20 @@ fetch("data/vtiger_account.json")
       const accountNo = document.createElement("span");
       accountNo.classList.add(
         "account_no",
-        "bg-warning",
+        "bg-info",
         "text-white",
         "text-center",
         "p-4",
         "d-flex",
         "justify-content-center",
         "align-items-center",
+        "position-relative",
         "rounded-circle"
       );
       accountNo.style.width = "20px"; // Adjust the width as needed
       accountNo.style.height = "20px"; // Adjust the height as needed
+      accountNo.style.top = "58px";
+      accountNo.style.left = "58px";
       accountNo.textContent = compte.account_no;
 
       // account picture
@@ -284,7 +310,7 @@ fetch("data/vtiger_account.json")
 
       cardEmployee.appendChild(cardEmployeeBody);
 
-      cardContainerEmployees.appendChild(cardEmployee);
+      compte.employees && cardContainerEmployees.appendChild(cardEmployee);
 
       // ANNUAL REVENUE
       const cardContainerRevenues = document.createElement("div");
@@ -327,12 +353,94 @@ fetch("data/vtiger_account.json")
 
       cardRevenue.appendChild(cardRevenueBody);
 
-      cardContainerRevenues.appendChild(cardRevenue);
+      compte.annualrevenue && cardContainerRevenues.appendChild(cardRevenue);
 
       // RATINGS
+      const cardContainerRating = document.createElement("div");
+      cardContainerRating.className = "col-xl-6 col-md-6 mb-3";
 
-      // const rating = document.createElement("p");
-      // rating.textContent = "Rating: " + compte.rating;
+      const cardRating = document.createElement("div");
+      cardRating.className = "card shadow h-100 py-2 pl-3";
+      cardRating.style.borderLeft = "10px solid purple";
+
+      const cardRatingBody = document.createElement("div");
+      cardRatingBody.className = "card-body";
+
+      const cardRatingRow = document.createElement("div");
+      cardRatingRow.className = "row no-gutters align-items-center";
+
+      const cardRatingColumnLeft = document.createElement("div");
+      cardRatingColumnLeft.className = "col mr-2";
+
+      const divTextRating = document.createElement("div");
+      divTextRating.className = "text-xs font-weight-bold text-uppercase mb-1";
+      divTextRating.textContent = "Note";
+
+      const divH5Rating = document.createElement("div");
+      divH5Rating.className = "h5 mb-0 font-weight-bold text-gray-800";
+      divH5Rating.textContent = compte.rating;
+
+      const divColAutoRating = document.createElement("div");
+      divColAutoRating.className = "col-auto";
+
+      const iElementRating = document.createElement("i");
+      iElementRating.className = "fas fa-star fa-2x text-gray-300";
+
+      cardRatingColumnLeft.appendChild(divTextRating);
+      cardRatingColumnLeft.appendChild(divH5Rating);
+
+      cardRatingRow.appendChild(cardRatingColumnLeft);
+      cardRatingRow.appendChild(divColAutoRating);
+      cardRatingBody.appendChild(cardRatingRow);
+      divColAutoRating.appendChild(iElementRating);
+
+      cardRating.appendChild(cardRatingBody);
+
+      compte.rating && cardContainerRating.appendChild(cardRating);
+
+      // OWNERSHIP (propriétaire)
+
+      const cardContainerOwner = document.createElement("div");
+      cardContainerOwner.className = "col-xl-6 col-md-6 mb-3";
+
+      const cardOwner = document.createElement("div");
+      cardOwner.className = "card shadow h-100 py-2 pl-3";
+      cardOwner.style.borderLeft = "10px solid yellow";
+
+      const cardOwnerBody = document.createElement("div");
+      cardOwnerBody.className = "card-body";
+
+      const cardOwnerRow = document.createElement("div");
+      cardOwnerRow.className = "row no-gutters align-items-center";
+
+      const cardOwnerColumnLeft = document.createElement("div");
+      cardOwnerColumnLeft.className = "col mr-2";
+
+      const divTextOwner = document.createElement("div");
+      divTextOwner.className = "text-xs font-weight-bold text-uppercase mb-1";
+      divTextOwner.textContent = "Propriétaire";
+
+      const divH5Owner = document.createElement("div");
+      divH5Owner.className = "h5 mb-0 font-weight-bold text-gray-800";
+      divH5Owner.textContent = compte.ownership;
+
+      const divColAutoOwner = document.createElement("div");
+      divColAutoOwner.className = "col-auto";
+
+      const iElementOwner = document.createElement("i");
+      iElementOwner.className = "fas fa-crown fa-2x text-gray-300";
+
+      cardOwnerColumnLeft.appendChild(divTextOwner);
+      cardOwnerColumnLeft.appendChild(divH5Owner);
+
+      cardOwnerRow.appendChild(cardOwnerColumnLeft);
+      cardOwnerRow.appendChild(divColAutoOwner);
+      cardOwnerBody.appendChild(cardOwnerRow);
+      divColAutoOwner.appendChild(iElementOwner);
+
+      cardOwner.appendChild(cardOwnerBody);
+
+      compte.ownership && cardContainerOwner.appendChild(cardOwner);
 
       // const ownership = document.createElement("p");
       // ownership.textContent = "Ownership: " + compte.ownership;
@@ -377,8 +485,10 @@ fetch("data/vtiger_account.json")
       row2Column1.appendChild(fax);
       row2Column1.appendChild(website);
 
+      row2Column2.appendChild(cardContainerOwner);
       row2Column2.appendChild(cardContainerEmployees);
       row2Column2.appendChild(cardContainerRevenues);
+      row2Column2.appendChild(cardContainerRating);
 
       row1.appendChild(row1Column1);
       row1.appendChild(row1Column2);
