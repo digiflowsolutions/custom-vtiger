@@ -10,138 +10,104 @@ fetch("data/vtiger_account.json")
       const backButton = document.createElement("a");
       backButton.href = "/comptes.html";
       backButton.textContent = "retour";
-      backButton.classList.add("arrow-link", "mb-3");
+      backButton.className = "arrow-link mb-3";
       backButton.style.display = "inline-block";
 
       const compteDetails = document.getElementById("compte-details");
       const card = document.createElement("div");
-      card.classList.add("container", "w-100", "m-auto");
+      card.className = "container w-100 m-auto";
 
-      const row1 = document.createElement("div");
-      row1.classList.add("row");
-      const row2 = document.createElement("div");
-      row1.classList.add("row");
-      const row3 = document.createElement("div");
-      row1.classList.add("row");
-      const row4 = document.createElement("div");
-      row1.classList.add("row");
+      const row = document.createElement("div");
+      row.className = "row";
 
       const row1Column1 = document.createElement("div");
-      row1Column1.classList.add(
-        "col-md-4",
-        "d-flex",
-        "justify-content-center",
-        "align-items-center"
-      );
+      row1Column1.className =
+        "col-md-4 d-flex justify-content-center align-items-center ";
+
       const row1Column2 = document.createElement("div");
-      row1Column2.classList.add(
-        "col-md-5",
-        "d-flex",
-        "justify-content-center",
-        "align-items-center"
-      );
+      row1Column2.className =
+        "col-md-5 d-flex justify-content-center align-items-center";
+
       const row1Column3 = document.createElement("div");
-      row1Column3.classList.add("col-md-3", "d-flex", "flex-column", "m-auto");
+      row1Column3.className = "col-md-3 d-flex flex-column m-auto";
 
       const row2Column1 = document.createElement("div");
-      row2Column1.classList.add(
-        "d-flex",
-        "flex-column",
-        "col-md-4",
-        "justify-content-center",
-        "align-items-center"
-      );
+      row2Column1.className =
+        "d-flex flex-column mt-3 col-md-4 align-items-center";
+
       const row2Column2 = document.createElement("div");
-      row2Column2.classList.add(
-        "col-md-8",
-        "d-flex",
-        "flex-column",
-        "justify-content-center",
-        "align-items-center",
-        "m-auto"
-      );
+      row2Column2.className =
+        "col-md-8 d-flex flex-column mt-3 justify-content-center align-items-center m-auto";
 
       // ROW 1 COLUMN 1
 
-      const AvatarDiv = document.createElement("div");
-      AvatarDiv.classList.add(
-        "d-flex",
-        "flex-column",
-        "justify-content-center",
-        "align-items-center"
-      );
+      const avatarDiv = document.createElement("div");
+
+      avatarDiv.className =
+        " d-flex flex-column justify-content-center align-items-center";
 
       //account_no
       const accountNo = document.createElement("span");
-      accountNo.classList.add(
-        "account_no",
-        "bg-info",
-        "text-white",
-        "text-center",
-        "p-4",
-        "d-flex",
-        "justify-content-center",
-        "align-items-center",
-        "position-relative",
-        "rounded-circle"
-      );
-      accountNo.style.width = "20px"; // Adjust the width as needed
-      accountNo.style.height = "20px"; // Adjust the height as needed
+      accountNo.className =
+        "account_no bg-info text-white text-center p-4 d-flex justify-content-center align-items-center position-relative rounded-circle";
+
+      accountNo.style.width = "20px";
+      accountNo.style.height = "20px";
       accountNo.style.top = "58px";
       accountNo.style.left = "58px";
       accountNo.textContent = compte.account_no;
+      avatarDiv.appendChild(accountNo);
 
-      // account picture
+      // account image
       const image = document.createElement("img");
       image.src = "/skins/images/icone-account.png";
-      image.classList.add("rounded", "p-3");
+      image.className = "rounded p-3";
       image.alt = "Contact Photo";
       image.style.maxWidth = "250px";
       image.style.maxHeight = "250px";
+      avatarDiv.appendChild(image);
 
       // ROW 1 COLUMN 2
       const accountTitle = document.createElement("div");
-      accountTitle.classList.add(
-        "mt-0",
-        "d-flex",
-        "justify-content-center",
-        "align-items-center",
-        "flex-column"
-      );
+      accountTitle.className =
+        "mt-0 d-flex justify-content-center align-otems-center flex-column";
 
       // accountname
       const accountName = document.createElement("h3");
-      accountName.classList.add("accountname");
+      accountName.className = "accountname";
       accountName.textContent = compte.accountname;
+      accountTitle.appendChild(accountName);
 
+      //account_type
       const accountType = document.createElement("p");
-      accountType.classList.add("account_type");
+      accountType.className = "account_type";
       accountType.textContent = compte.account_type;
+      accountTitle.appendChild(accountType);
+
+      //industry
       const accountIndustry = document.createElement("p");
-      accountIndustry.classList.add("account_industry");
+      accountIndustry.className = "account_industry";
       accountIndustry.textContent = compte.industry;
+      accountTitle.appendChild(accountIndustry);
 
       // ROW 1 COLUMN 3
 
       // isconvertedfromlead
       const accountConvertedFromLead = document.createElement("span");
-      accountConvertedFromLead.classList.add(
-        "isconvertedfromlead",
-        "bg-success",
-        "text-center",
-        "p-2",
-        "rounded",
-        "text-white"
-      );
+      accountConvertedFromLead.className =
+        "isconvertedfromlead bg-success text-center p-3 rounded text-white m-auto";
 
-      if (compte.isconvertedfromlead) {
-        accountConvertedFromLead.textContent = "converti d'un prospect";
-      } else {
-        accountConvertedFromLead.classList.remove("p-2");
-      }
+      accountConvertedFromLead.textContent = "converti d'un prospect";
+      compte.isconvertedfromlead &&
+        row1Column3.appendChild(accountConvertedFromLead);
 
       // tags
-      const containerTags = document.createElement("div"); //
+      const containerTags = document.createElement("div");
+      containerTags.classList.add(
+        "d-flex",
+        "justify-content-center",
+        "align-items-center"
+      );
 
       compte.tags.map((tag) => {
         const badge = document.createElement("span");
@@ -331,11 +297,13 @@ fetch("data/vtiger_account.json")
 
       const divTextRevenue = document.createElement("div");
       divTextRevenue.className = "text-xs font-weight-bold text-uppercase mb-1";
-      divTextRevenue.textContent = "Revenu annuel";
+      divTextRevenue.textContent = `Revenu annuel`;
 
       const divH5Revenue = document.createElement("div");
       divH5Revenue.className = "h5 mb-0 font-weight-bold text-gray-800";
-      divH5Revenue.textContent = compte.annualrevenue;
+      compte.tickersymbol
+        ? (divH5Revenue.textContent = ` ${compte.tickersymbol} ${compte.annualrevenue}`)
+        : (divH5Revenue.textContent = `€ ${compte.annualrevenue}`);
 
       const divColAutoRevenue = document.createElement("div");
       divColAutoRevenue.className = "col-auto";
@@ -442,9 +410,6 @@ fetch("data/vtiger_account.json")
 
       compte.ownership && cardContainerOwner.appendChild(cardOwner);
 
-      // const ownership = document.createElement("p");
-      // ownership.textContent = "Ownership: " + compte.ownership;
-
       // const sicCode = document.createElement("p");
       // sicCode.textContent = "SIC Code: " + compte.siccode;
 
@@ -468,40 +433,29 @@ fetch("data/vtiger_account.json")
 
       // card.appendChild(badge);
 
-      AvatarDiv.appendChild(accountNo);
-      AvatarDiv.appendChild(image);
-
-      accountTitle.appendChild(accountName);
-      accountTitle.appendChild(accountType);
-      accountTitle.appendChild(accountIndustry);
-
-      row1Column1.appendChild(AvatarDiv);
+      row1Column1.appendChild(avatarDiv);
       row1Column2.appendChild(accountTitle);
-      row1Column3.appendChild(accountConvertedFromLead);
       row1Column3.appendChild(containerTags);
+
+      row.appendChild(row1Column1);
+      row.appendChild(row1Column2);
+      row.appendChild(row1Column3);
 
       row2Column1.appendChild(phones);
       row2Column1.appendChild(emails);
       row2Column1.appendChild(fax);
       row2Column1.appendChild(website);
 
+      row.appendChild(row2Column1);
+      row.appendChild(row2Column2);
+
       row2Column2.appendChild(cardContainerOwner);
       row2Column2.appendChild(cardContainerEmployees);
       row2Column2.appendChild(cardContainerRevenues);
       row2Column2.appendChild(cardContainerRating);
 
-      row1.appendChild(row1Column1);
-      row1.appendChild(row1Column2);
-      row1.appendChild(row1Column3);
-
-      row1.appendChild(row2Column1);
-      row1.appendChild(row2Column2);
-
       card.appendChild(backButton);
-      card.appendChild(row1);
-      card.appendChild(row2);
-      card.appendChild(row3);
-      card.appendChild(row4);
+      card.appendChild(row);
 
       compteDetails.appendChild(card);
     } else {
