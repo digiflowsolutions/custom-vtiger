@@ -109,6 +109,9 @@ nav {
 .arrow-link {
   font-size: 40px;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
 #comptes-container {
   display: flex;
   flex-direction: column;
