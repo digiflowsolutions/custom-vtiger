@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       const contactsCount = data.length;
 
-      fetch("data/comptes.json")
+      fetch("data/vtiger_account.json")
         .then((response) => response.json())
         .then((data) => {
           const comptesCount = data.length;

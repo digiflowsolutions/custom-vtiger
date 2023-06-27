@@ -33,7 +33,7 @@ fetch("data/vtiger_account.json")
 
       const row2Column1 = document.createElement("div");
       row2Column1.className =
-        "d-flex flex-column mt-3 col-md-4 align-items-center";
+        "d-flex flex-column mt-3 col-md-4 justify-content-center align-items-md-start align-items-sm-center";
 
       const row2Column2 = document.createElement("div");
       row2Column2.className =
@@ -43,24 +43,19 @@ fetch("data/vtiger_account.json")
       row2Column3.className =
         "col-md-4 mt-3 d-flex flex-column justify-content-center align-items-center m-auto";
 
+      const row3Column1 = document.createElement("div");
+      row3Column1.className =
+        "d-flex flex-column mt-5 col-md-4 justify-content-center align-items-md-start align-items-sm-center";
+      const row3Column2 = document.createElement("div");
+      row3Column2.className =
+        "bg-dark d-flex flex-column mt-3 col-md-8 justify-content-center align-items-md-start align-items-sm-center";
+
       // ROW 1 COLUMN 1
 
       const avatarDiv = document.createElement("div");
 
       avatarDiv.className =
         " d-flex flex-column justify-content-center align-items-center";
-
-      //account_no
-      const accountNo = document.createElement("span");
-      accountNo.className =
-        "account_no bg-info text-white text-center p-4 d-flex justify-content-center align-items-center position-relative rounded-circle";
-
-      accountNo.style.width = "20px";
-      accountNo.style.height = "20px";
-      accountNo.style.top = "58px";
-      accountNo.style.left = "58px";
-      accountNo.textContent = compte.account_no;
-      avatarDiv.appendChild(accountNo);
 
       // account image
       const image = document.createElement("img");
@@ -71,27 +66,39 @@ fetch("data/vtiger_account.json")
       image.style.maxHeight = "250px";
       avatarDiv.appendChild(image);
 
+      //account_no
+      const accountNo = document.createElement("span");
+      accountNo.className =
+        "account_no bg-info text-white text-center p-2 d-flex justify-content-center align-items-center rounded";
+
+      accountNo.style.width = "120px";
+      accountNo.style.height = "30px";
+      // accountNo.style.top = "58px";
+      // accountNo.style.left = "58px";
+      accountNo.textContent = `${compte.account_no} / ${data.length}` || "-";
+      avatarDiv.appendChild(accountNo);
+
       // ROW 1 COLUMN 2
       const accountTitle = document.createElement("div");
       accountTitle.className =
-        "mt-0 d-flex justify-content-center align-otems-center flex-column";
+        "mt-0 d-flex justify-content-center align-items-center flex-column";
 
       // accountname
       const accountName = document.createElement("h3");
       accountName.className = "accountname";
-      accountName.textContent = compte.accountname;
+      accountName.textContent = compte.accountname || "-";
       accountTitle.appendChild(accountName);
 
       //account_type
       const accountType = document.createElement("p");
       accountType.className = "account_type";
-      accountType.textContent = compte.account_type;
+      accountType.textContent = compte.account_type || "-";
       accountTitle.appendChild(accountType);
 
       //industry
       const accountIndustry = document.createElement("p");
       accountIndustry.className = "account_industry";
-      accountIndustry.textContent = compte.industry;
+      accountIndustry.textContent = compte.industry || "-";
       accountTitle.appendChild(accountIndustry);
 
       // ROW 1 COLUMN 3
@@ -128,7 +135,6 @@ fetch("data/vtiger_account.json")
       });
 
       // ROW 2 COLUMN 1
-
       // phone + otherphone
       const emojiPhone = document.createElement("h3");
       emojiPhone.classList.add("m-0", "mr-3");
@@ -136,15 +142,15 @@ fetch("data/vtiger_account.json")
 
       const phone1Link = document.createElement("a");
       phone1Link.classList.add("mr-1", "text-reset");
-      phone1Link.href = `tel:${compte.phone}`;
-      phone1Link.textContent = ` ${compte.phone} `;
+      phone1Link.href = `tel:${compte.phone || "-"}`;
+      phone1Link.textContent = compte.phone || "-";
       phone1Link.target = "_blank";
 
       const phone2Link = document.createElement("a");
       phone2Link.classList.add("mr-1", "text-reset");
 
-      phone2Link.href = `tel:${compte.otherphone}`;
-      phone2Link.textContent = `${compte.otherphone}`;
+      phone2Link.href = `tel:${compte.otherphone || "-"}`;
+      phone2Link.textContent = `${compte.otherphone || "-"}`;
       phone2Link.target = "_blank";
 
       const phones = document.createElement("div");
@@ -169,14 +175,14 @@ fetch("data/vtiger_account.json")
 
       const email1Link = document.createElement("a");
       email1Link.classList.add("text-reset");
-      email1Link.href = `mailto:${compte.email1}`;
-      email1Link.textContent = ` ${compte.email1} `;
+      email1Link.href = `mailto:${compte.email1 || "-"}`;
+      email1Link.textContent = ` ${compte.email1 || "-"} `;
       email1Link.target = "_blank";
 
       const email2Link = document.createElement("a");
       email2Link.classList.add("text-reset");
-      email2Link.href = `mailto:${compte.email2}`;
-      email2Link.textContent = `${compte.email2}`;
+      email2Link.href = `mailto:${compte.email2 || "-"}`;
+      email2Link.textContent = `${compte.email2 || "-"}`;
       email2Link.target = "_blank";
 
       const emails = document.createElement("div");
@@ -201,8 +207,8 @@ fetch("data/vtiger_account.json")
 
       const faxLink = document.createElement("a");
       faxLink.classList.add("text-reset");
-      faxLink.href = `tel:${compte.fax}`;
-      faxLink.textContent = ` ${compte.fax} `;
+      faxLink.href = `tel:${compte.fax || "-"}`;
+      faxLink.textContent = ` ${compte.fax || "-"} `;
       faxLink.target = "_blank";
 
       const fax = document.createElement("div");
@@ -224,7 +230,7 @@ fetch("data/vtiger_account.json")
       websiteLink.classList.add("text-reset");
 
       websiteLink.href = compte.website;
-      websiteLink.textContent = compte.website;
+      websiteLink.textContent = compte.website || "-";
       websiteLink.target = "_blank";
 
       const website = document.createElement("div");
@@ -241,7 +247,7 @@ fetch("data/vtiger_account.json")
       // Employees
 
       const cardContainerEmployees = document.createElement("div");
-      cardContainerEmployees.className = "col-xl-12 col-md-9 mb-3";
+      cardContainerEmployees.className = "col-12  mb-3";
 
       const cardEmployee = document.createElement("div");
       cardEmployee.className = "card shadow h-100 py-2 pl-3";
@@ -263,7 +269,7 @@ fetch("data/vtiger_account.json")
 
       const divH5Employee = document.createElement("div");
       divH5Employee.className = "h5 mb-0 font-weight-bold text-gray-800";
-      divH5Employee.textContent = compte.employees;
+      divH5Employee.textContent = compte.employees || "-";
 
       const divColAutoEmployee = document.createElement("div");
       divColAutoEmployee.className = "col-auto";
@@ -281,12 +287,12 @@ fetch("data/vtiger_account.json")
 
       cardEmployee.appendChild(cardEmployeeBody);
 
-      compte.employees && cardContainerEmployees.appendChild(cardEmployee);
+      cardContainerEmployees.appendChild(cardEmployee);
 
       // OWNERSHIP (propriétaire)
 
       const cardContainerOwner = document.createElement("div");
-      cardContainerOwner.className = "col-xl-12 col-md-9 mb-3";
+      cardContainerOwner.className = "col-12  mb-3";
 
       const cardOwner = document.createElement("div");
       cardOwner.className = "card shadow h-100 py-2 pl-3";
@@ -307,7 +313,7 @@ fetch("data/vtiger_account.json")
 
       const divH5Owner = document.createElement("div");
       divH5Owner.className = "h5 mb-0 font-weight-bold text-gray-800";
-      divH5Owner.textContent = compte.ownership;
+      divH5Owner.textContent = compte.ownership || "-";
 
       const divColAutoOwner = document.createElement("div");
       divColAutoOwner.className = "col-auto";
@@ -325,13 +331,13 @@ fetch("data/vtiger_account.json")
 
       cardOwner.appendChild(cardOwnerBody);
 
-      compte.ownership && cardContainerOwner.appendChild(cardOwner);
+      cardContainerOwner.appendChild(cardOwner);
 
       // row2Column3
 
       // ANNUAL REVENUE
       const cardContainerRevenues = document.createElement("div");
-      cardContainerRevenues.className = "col-xl-12 col-md-9 mb-3";
+      cardContainerRevenues.className = "col-12  mb-3";
 
       const cardRevenue = document.createElement("div");
       cardRevenue.className = "card shadow h-100 py-2 pl-3";
@@ -355,7 +361,7 @@ fetch("data/vtiger_account.json")
       const divH5Revenue = document.createElement("div");
       divH5Revenue.className = "h5 mb-0 font-weight-bold text-gray-800";
 
-      divH5Revenue.textContent = ` ${compte.annualrevenue}`;
+      divH5Revenue.textContent = compte.annualrevenue || "-";
 
       const divColAutoRevenue = document.createElement("div");
       divColAutoRevenue.className = "col-auto";
@@ -374,11 +380,11 @@ fetch("data/vtiger_account.json")
 
       cardRevenue.appendChild(cardRevenueBody);
 
-      compte.annualrevenue && cardContainerRevenues.appendChild(cardRevenue);
+      cardContainerRevenues.appendChild(cardRevenue);
 
       // RATINGS
       const cardContainerRating = document.createElement("div");
-      cardContainerRating.className = "col-xl-12 col-md-9 mb-3";
+      cardContainerRating.className = "col-12  mb-3";
 
       const cardRating = document.createElement("div");
       cardRating.className = "card shadow h-100 py-2 pl-3";
@@ -399,7 +405,7 @@ fetch("data/vtiger_account.json")
 
       const divH5Rating = document.createElement("div");
       divH5Rating.className = "h5 mb-0 font-weight-bold text-gray-800";
-      divH5Rating.textContent = compte.rating;
+      divH5Rating.textContent = compte.rating || "-";
 
       const divColAutoRating = document.createElement("div");
       divColAutoRating.className = "col-auto";
@@ -417,30 +423,34 @@ fetch("data/vtiger_account.json")
 
       cardRating.appendChild(cardRatingBody);
 
-      compte.rating && cardContainerRating.appendChild(cardRating);
+      cardContainerRating.appendChild(cardRating);
 
-      // const sicCode = document.createElement("p");
-      // sicCode.textContent = "SIC Code: " + compte.siccode;
+      // code ape
+      const sicCode = document.createElement("p");
+      sicCode.textContent = "Code APE: " + compte.siccode;
 
-      // const tickerSymbol = document.createElement("p");
-      // tickerSymbol.textContent = "Ticker Symbol: " + compte.tickersymbol;
+      // dates
 
-      // const tags = document.createElement("p");
-      // tags.textContent = "Tags: " + compte.tags.join(", ");
+      const timestamp = Date.now();
+      const date = new Date(timestamp);
 
-      // cardBody.appendChild(carAccountName);
-      // cardBody.appendChild(cardType);
-      // cardBody.appendChild(cardIndustry);
-      // cardBody.appendChild(cardText);
-      // cardBody.appendChild(employees);
-      // cardBody.appendChild(annualRevenue);
-      // cardBody.appendChild(rating);
-      // cardBody.appendChild(ownership);
-      // cardBody.appendChild(sicCode);
-      // cardBody.appendChild(tickerSymbol);
-      // cardBody.appendChild(tags);
+      // Extract the individual date components
+      const year = date.getFullYear();
+      let month = date.getMonth() + 1; // Months are zero-based, so we add 1
+      month = month < 10 ? "0" + month : month;
+      const day = date.getDate();
 
-      // card.appendChild(badge);
+      // Format the date as a string
+      const formattedDate = day + "/" + month + "/" + year;
+
+      // date de création
+
+      const dateCreation = document.createElement("p");
+      dateCreation.textContent = `date création : ${formattedDate}`;
+
+      //date de modification
+      const dateModification = document.createElement("p");
+      dateModification.textContent = `date modification : ${formattedDate}`;
 
       row1Column1.appendChild(avatarDiv);
       row1Column2.appendChild(accountTitle);
@@ -463,6 +473,15 @@ fetch("data/vtiger_account.json")
       row2Column2.appendChild(cardContainerEmployees);
       row2Column3.appendChild(cardContainerRevenues);
       row2Column3.appendChild(cardContainerRating);
+
+      row.appendChild(row3Column1);
+      row.appendChild(row3Column2);
+
+      row3Column1.appendChild(sicCode);
+      row3Column1.appendChild(dateCreation);
+      row3Column1.appendChild(dateModification);
+      // row3Column2.appendChild(cardContainerEmployees);
+      // row3Column3.appendChild(cardContainerRevenues);
 
       card.appendChild(backButton);
       card.appendChild(row);
