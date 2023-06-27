@@ -114,22 +114,13 @@ fetch("data/vtiger_account.json")
 
       // tags
       const containerTags = document.createElement("div");
-      containerTags.classList.add(
-        "d-flex",
-        "justify-content-center",
-        "align-items-center"
-      );
+
+      containerTags.className =
+        "d-flex justify-content-center align-items-center";
 
       compte.tags.map((tag) => {
         const badge = document.createElement("span");
-        badge.classList.add(
-          "badge",
-          "badge-info",
-          "p-2",
-          "mr-2",
-          "mt-3",
-          "text-center"
-        );
+        badge.className = "badge badge-info p-2 mr-2 mt-3 text-center";
         badge.textContent = tag;
         containerTags.appendChild(badge);
       });
@@ -137,27 +128,27 @@ fetch("data/vtiger_account.json")
       // ROW 2 COLUMN 1
       // phone + otherphone
       const emojiPhone = document.createElement("h3");
-      emojiPhone.classList.add("m-0", "mr-3");
+      emojiPhone.className = "m-0 mr-3";
       emojiPhone.textContent = `📱`;
 
       const phone1Link = document.createElement("a");
-      phone1Link.classList.add("mr-1", "text-reset");
+      phone1Link.className = "mr-1 text-reset";
       phone1Link.href = `tel:${compte.phone || "-"}`;
       phone1Link.textContent = compte.phone || "-";
       phone1Link.target = "_blank";
 
       const phone2Link = document.createElement("a");
-      phone2Link.classList.add("mr-1", "text-reset");
+      phone2Link.className = "mr-1 text-reset";
 
       phone2Link.href = `tel:${compte.otherphone || "-"}`;
       phone2Link.textContent = `${compte.otherphone || "-"}`;
       phone2Link.target = "_blank";
 
       const phones = document.createElement("div");
-      phones.classList.add("d-flex", "mt-3", "align-items-top");
+      phones.className = "d-flex mt-3 align-items-center";
 
       phonesNumbers = document.createElement("div");
-      phonesNumbers.classList.add("d-flex", "flex-column");
+      phonesNumbers.className = "d-flex flex-column";
 
       (compte.phone || compte.otherphone) && phones.appendChild(emojiPhone);
 
@@ -170,26 +161,26 @@ fetch("data/vtiger_account.json")
       // email1 + email2
 
       const emojiEmail = document.createElement("h3");
-      emojiEmail.classList.add("m-0", "mr-3");
+      emojiEmail.className = "m-0 mr-3";
       emojiEmail.textContent = `✉️`;
 
       const email1Link = document.createElement("a");
-      email1Link.classList.add("text-reset");
+      email1Link.className = "text-reset";
       email1Link.href = `mailto:${compte.email1 || "-"}`;
       email1Link.textContent = ` ${compte.email1 || "-"} `;
       email1Link.target = "_blank";
 
       const email2Link = document.createElement("a");
-      email2Link.classList.add("text-reset");
+      email2Link.className = "text-reset";
       email2Link.href = `mailto:${compte.email2 || "-"}`;
       email2Link.textContent = `${compte.email2 || "-"}`;
       email2Link.target = "_blank";
 
       const emails = document.createElement("div");
-      emails.classList.add("d-flex", "mt-4", "align-items-top");
+      emails.className = "d-flex mt-4 align-items-center";
 
       emailAdresses = document.createElement("div");
-      emailAdresses.classList.add("d-flex", "flex-column");
+      emailAdresses.className = "d-flex flex-column";
 
       (compte.email1 || compte.email2) && emails.appendChild(emojiEmail);
 
@@ -202,20 +193,20 @@ fetch("data/vtiger_account.json")
       // fax
 
       const emojiFax = document.createElement("h3");
-      emojiFax.classList.add("m-0", "mr-3");
+      emojiFax.className = "m-0 mr-3";
       emojiFax.textContent = `📠`;
 
       const faxLink = document.createElement("a");
-      faxLink.classList.add("text-reset");
+      faxLink.className = "text-reset";
       faxLink.href = `tel:${compte.fax || "-"}`;
       faxLink.textContent = ` ${compte.fax || "-"} `;
       faxLink.target = "_blank";
 
       const fax = document.createElement("div");
-      fax.classList.add("d-flex", "mt-4", "align-items-top");
+      fax.className = "d-flex mt-4 align-items-center";
 
       const faxNumber = document.createElement("div");
-      faxNumber.classList.add("d-flex", "flex-column");
+      faxNumber.className = "d-flex flex-column";
 
       compte.fax && fax.appendChild(emojiFax);
       compte.fax && faxNumber.appendChild(faxLink);
@@ -223,21 +214,21 @@ fetch("data/vtiger_account.json")
 
       //website
       const emojiWebsite = document.createElement("h3");
-      emojiWebsite.classList.add("m-0", "mr-3");
+      emojiWebsite.className = "m-0 mr-3";
       emojiWebsite.textContent = `🌐`;
 
       const websiteLink = document.createElement("a");
-      websiteLink.classList.add("text-reset");
+      websiteLink.className = "text-reset";
 
       websiteLink.href = compte.website;
       websiteLink.textContent = compte.website || "-";
       websiteLink.target = "_blank";
 
       const website = document.createElement("div");
-      website.classList.add("d-flex", "mt-4", "align-items-top");
+      website.className = "d-flex mt-4 align-items-center";
 
       const websiteUrl = document.createElement("div");
-      websiteUrl.classList.add("d-flex", "flex-column");
+      websiteUrl.className = "d-flex flex-column";
 
       compte.website && website.appendChild(emojiWebsite);
       compte.website && websiteUrl.appendChild(websiteLink);
@@ -489,7 +480,7 @@ fetch("data/vtiger_account.json")
       compteDetails.appendChild(card);
     } else {
       const errorElement = document.createElement("p");
-      errorElement.classList.add("text-danger");
+      errorElement.className = "text-danger";
       errorElement.textContent = "Compte inconnu";
 
       document.getElementById("compte-details").appendChild(errorElement);
