@@ -1,6 +1,3 @@
-// const urlParams = new URLSearchParams(window.location.search);
-// const compteId = urlParams.get("id");
-
 fetch("data/vtiger_crmentity.json")
   .then((response) => response.json())
   .then((data) => {
@@ -9,38 +6,37 @@ fetch("data/vtiger_crmentity.json")
     if (description) {
       const compteDescription = document.getElementById("compte-description");
 
-      const dropdownButton = document.createElement("button");
-      dropdownButton.className = "btn btn-secondary dropdown-toggle";
-      dropdownButton.type = "button";
-      dropdownButton.id = "dropdownMenuButton";
-      dropdownButton.setAttribute("data-toggle", "dropdown");
-      dropdownButton.setAttribute("aria-haspopup", "true");
-      dropdownButton.setAttribute("aria-expanded", "false");
-      dropdownButton.innerText = "Dropdown button";
+      const toggleButton = document.createElement("button");
+      toggleButton.className = "btn btn-secondary";
+      toggleButton.type = "button";
+      toggleButton.innerText = "Description";
+      toggleButton.innerHTML += '<span class="arrow">&#9662;</span>'; // Add arrow HTML
 
-      const dropdownMenu = document.createElement("div");
-      dropdownMenu.className = "dropdown-menu";
-      dropdownMenu.setAttribute("aria-labelledby", "dropdownMenuButton");
+      const descriptionDiv = document.createElement("div");
+      descriptionDiv.className = "description-content";
+      descriptionDiv.textContent = description.description;
 
-      const descriptionText = document.createElement("a");
-      descriptionText.className = "dropdown-item";
+      // Hide the description div by default
+      descriptionDiv.style.display = "none";
 
-      descriptionText.textContent = description.description;
+      const toggleContainer = document.createElement("div");
+      toggleContainer.className = "toggle-container";
+      toggleContainer.appendChild(toggleButton);
+      toggleContainer.appendChild(descriptionDiv);
 
-      dropdownMenu.appendChild(descriptionText);
+      // Append the toggle container to the compteDescription element
+      compteDescription.appendChild(toggleContainer);
 
-      const dropdownContainer = document.createElement("div");
-      dropdownContainer.className = "dropdown";
-      dropdownContainer.appendChild(dropdownButton);
-      dropdownContainer.appendChild(dropdownMenu);
-
-      // Append the dropdown container to the compteDescription element
-      compteDescription.appendChild(dropdownContainer);
-
-      // Add click event listener to the dropdown button
-      dropdownButton.addEventListener("click", function () {
-        // Toggle the dropdown menu visibility
-        dropdownMenu.classList.toggle("show");
+      // Add click event listener to the toggle button
+      toggleButton.addEventListener("click", function () {
+        // Toggle the visibility of the description div
+        if (descriptionDiv.style.display === "none") {
+          descriptionDiv.style.display = "block";
+          toggleButton.querySelector(".arrow").innerHTML = "&#9652;"; // Change arrow direction
+        } else {
+          descriptionDiv.style.display = "none";
+          toggleButton.querySelector(".arrow").innerHTML = "&#9662;"; // Change arrow direction
+        }
       });
     } else {
       const errorElement = document.createElement("p");
