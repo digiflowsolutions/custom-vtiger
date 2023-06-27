@@ -9,8 +9,9 @@ fetch("data/vtiger_account.json")
     if (compte) {
       const backButton = document.createElement("a");
       backButton.href = "/comptes.html";
-      backButton.textContent = "retour";
-      backButton.className = "arrow-link mb-3";
+      backButton.innerHTML =
+        '<i class="fa fa-arrow-left" aria-hidden="true"></i>';
+      backButton.className = "arrow-link mb-3 text-dark";
       backButton.style.display = "inline-block";
 
       const compteDetails = document.getElementById("compte-details");

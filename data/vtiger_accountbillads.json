@@ -1,0 +1,65 @@
+[
+  {
+    "accountaddressid": "3",
+    "bill_city": "paris",
+    "bill_code": "122221",
+    "bill_country": "FRANCE",
+    "bill_state": "IDF",
+    "bill_street": "prospect address",
+    "bill_pobox": ""
+  },
+  {
+    "accountaddressid": "17",
+    "bill_city": "",
+    "bill_code": "",
+    "bill_country": "",
+    "bill_state": "",
+    "bill_street": "",
+    "bill_pobox": ""
+  },
+  {
+    "accountaddressid": "18",
+    "bill_city": "",
+    "bill_code": "",
+    "bill_country": "",
+    "bill_state": "",
+    "bill_street": "",
+    "bill_pobox": ""
+  },
+  {
+    "accountaddressid": "19",
+    "bill_city": "",
+    "bill_code": "",
+    "bill_country": "",
+    "bill_state": "",
+    "bill_street": "",
+    "bill_pobox": ""
+  },
+  {
+    "accountaddressid": "20",
+    "bill_city": "",
+    "bill_code": "",
+    "bill_country": "",
+    "bill_state": "",
+    "bill_street": "",
+    "bill_pobox": ""
+  },
+  {
+    "accountaddressid": "21",
+    "bill_city": "",
+    "bill_code": "",
+    "bill_country": "",
+    "bill_state": "",
+    "bill_street": "",
+    "bill_pobox": ""
+  },
+  {
+    "accountaddressid": "24",
+    "bill_city": "",
+    "bill_code": "",
+    "bill_country": "",
+    "bill_state": "",
+    "bill_street": "",
+    "bill_pobox": ""
+  }
+]
