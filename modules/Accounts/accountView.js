@@ -46,9 +46,9 @@ fetch("data/vtiger_account.json")
       const row3Column1 = document.createElement("div");
       row3Column1.className =
         "d-flex flex-column mt-5 col-md-4 justify-content-center align-items-md-start align-items-sm-center";
-      const row3Column2 = document.createElement("div");
-      row3Column2.className =
-        "bg-dark d-flex flex-column mt-3 col-md-8 justify-content-center align-items-md-start align-items-sm-center";
+      // const row3Column2 = document.createElement("div");
+      // row3Column2.className =
+      //   "bg-dark d-flex flex-column mt-3 col-md-8 justify-content-center align-items-md-start align-items-sm-center";
 
       // ROW 1 COLUMN 1
 
@@ -354,7 +354,7 @@ fetch("data/vtiger_account.json")
 
       const divTextRevenue = document.createElement("div");
       divTextRevenue.className = "text-xs font-weight-bold text-uppercase mb-1";
-      divTextRevenue.textContent = `Revenu annuel (en ${
+      divTextRevenue.textContent = `Revenu annuel (${
         compte.tickersymbol ? compte.tickersymbol : "€"
       })`;
 
@@ -426,7 +426,7 @@ fetch("data/vtiger_account.json")
       cardContainerRating.appendChild(cardRating);
 
       // code ape
-      const sicCode = document.createElement("p");
+      const sicCode = document.createElement("div");
       sicCode.textContent = "Code APE: " + compte.siccode;
 
       // dates
@@ -445,11 +445,11 @@ fetch("data/vtiger_account.json")
 
       // date de création
 
-      const dateCreation = document.createElement("p");
+      const dateCreation = document.createElement("div");
       dateCreation.textContent = `date création : ${formattedDate}`;
 
       //date de modification
-      const dateModification = document.createElement("p");
+      const dateModification = document.createElement("div");
       dateModification.textContent = `date modification : ${formattedDate}`;
 
       row1Column1.appendChild(avatarDiv);
@@ -475,7 +475,7 @@ fetch("data/vtiger_account.json")
       row2Column3.appendChild(cardContainerRating);
 
       row.appendChild(row3Column1);
-      row.appendChild(row3Column2);
+      // row.appendChild(row3Column2);
 
       row3Column1.appendChild(sicCode);
       row3Column1.appendChild(dateCreation);
