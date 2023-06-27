@@ -2,6 +2,9 @@ body {
   padding: 50px;
 }
 
+main {
+  margin-bottom: 500px;
+}
 .container {
   margin-top: 50px;
 }
@@ -97,6 +100,8 @@ nav {
 /* LISTS / CARDS */
 .arrow {
   cursor: pointer;
+  font-size: 40px;
+  margin: 0;
   /* width: 20px;
   height: 20px;
   color: #dc3545; */
