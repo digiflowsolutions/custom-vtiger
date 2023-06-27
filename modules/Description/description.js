@@ -17,7 +17,7 @@ fetch("data/vtiger_crmentity.json")
 
     const toggleButton = document.createElement("div");
     toggleButton.className =
-      "bg-secondary text-white rounded pl-5 pr-5  mb-2 d-flex justify-content-between align-items-center";
+      "bg-secondary text-white rounded pl-5 pr-5  mb-2 mt-5 d-flex justify-content-between align-items-center";
     //   toggleButton.type = "button";
     toggleButton.innerText = "Description ";
     toggleButton.innerHTML += '<span class="arrow">&#9662;</span>'; // Add arrow HTML
