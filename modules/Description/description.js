@@ -17,7 +17,7 @@ fetch("data/vtiger_crmentity.json")
 
     const toggleButton = document.createElement("div");
     toggleButton.className =
-      "cursor-pointer bg-secondary text-white rounded pl-5 pr-5  mb-2 mt-5 d-flex justify-content-between align-items-center";
+      "cursor-pointer bg-primary text-white rounded pl-5 pr-5  mb-2 mt-5 d-flex justify-content-between align-items-center";
     //   toggleButton.type = "button";
     toggleButton.innerText = "Description ";
     toggleButton.innerHTML += '<span class="arrow">&#9662;</span>'; // Add arrow HTML
@@ -25,10 +25,14 @@ fetch("data/vtiger_crmentity.json")
     const descriptionDiv = document.createElement("div");
     descriptionDiv.className = "description-content pl-3 mt-2";
 
-    const dateCreation = document.createElement("p");
+    const dateCreation = document.createElement("span");
+    dateCreation.className = "badge badge-success mr-5 mb-3";
+
     dateCreation.textContent = ` crée le ${description.createdtime}`;
 
-    const dateMofication = document.createElement("p");
+    const dateMofication = document.createElement("span");
+    dateMofication.className = "badge badge-warning";
+
     dateMofication.textContent = ` modifié le ${description.createdtime}`;
 
     const descriptionText = document.createElement("div");

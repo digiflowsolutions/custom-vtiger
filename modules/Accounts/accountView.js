@@ -469,12 +469,6 @@ fetch("data/vtiger_account.json")
       row2Column3.appendChild(cardContainerRating);
 
       row.appendChild(row3Column1);
-      // row.appendChild(row3Column2);
-
-      // row3Column1.appendChild(dateCreation);
-      // row3Column1.appendChild(dateModification);
-      // row3Column2.appendChild(cardContainerEmployees);
-      // row3Column3.appendChild(cardContainerRevenues);
 
       card.appendChild(backButton);
       card.appendChild(row);

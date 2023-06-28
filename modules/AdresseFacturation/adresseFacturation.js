@@ -21,7 +21,7 @@ fetch("data/vtiger_accountbillads.json")
 
     const toggleButton = document.createElement("div");
     toggleButton.className =
-      "cursor-pointer bg-secondary text-white rounded pl-5 pr-5 mt-5 mb-2 d-flex justify-content-between align-items-center";
+      "cursor-pointer bg-primary text-white rounded pl-5 pr-5 mt-5 mb-2 d-flex justify-content-between align-items-center";
     toggleButton.innerText = "Adresse de facturation ";
     toggleButton.innerHTML += '<span class="arrow">&#9662;</span>'; // Add arrow HTML
 
