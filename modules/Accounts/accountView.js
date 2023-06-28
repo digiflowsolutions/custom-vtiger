@@ -423,29 +423,6 @@ fetch("data/vtiger_account.json")
 
       cardContainerRating.appendChild(cardRating);
 
-      // dates
-
-      // const timestamp = Date.now();
-      // const date = new Date(timestamp);
-
-      // // Extract the individual date components
-      // const year = date.getFullYear();
-      // let month = date.getMonth() + 1; // Months are zero-based, so we add 1
-      // month = month < 10 ? "0" + month : month;
-      // const day = date.getDate();
-
-      // // Format the date as a string
-      // const formattedDate = day + "/" + month + "/" + year;
-
-      // // date de création
-
-      // const dateCreation = document.createElement("div");
-      // dateCreation.textContent = `date création : ${formattedDate}`;
-
-      // //date de modification
-      // const dateModification = document.createElement("div");
-      // dateModification.textContent = `date modification : ${formattedDate}`;
-
       row1Column1.appendChild(avatarDiv);
       row1Column2.appendChild(accountTitle);
       row1Column3.appendChild(containerTags);
