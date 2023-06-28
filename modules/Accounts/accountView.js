@@ -86,26 +86,28 @@ fetch("data/vtiger_account.json")
 
       // accountname
       const accountName = document.createElement("h1");
-      accountName.className = "accountname mb-4";
+      accountName.className = "accountname mb-3 text-center";
       accountName.textContent = compte.accountname || "-";
       accountTitle.appendChild(accountName);
 
       //account_type
-      const accountType = document.createElement("p");
-      accountType.className = "account_type mb-4";
+      const accountType = document.createElement("h3");
+      accountType.className = "account_type mb-3";
       accountType.textContent = compte.account_type || "-";
       accountTitle.appendChild(accountType);
 
       //industry
-      const accountIndustry = document.createElement("p");
-      accountIndustry.className = "account_industry";
+      const accountIndustry = document.createElement("h5");
+      accountIndustry.className = "account_industry mb-3";
       accountIndustry.textContent = compte.industry || "-";
       accountTitle.appendChild(accountIndustry);
 
       //code APE
 
       const sicCode = document.createElement("div");
-      sicCode.textContent = "APE : " + compte.siccode;
+      sicCode.innerHTML =
+        "<em><u>APE</u> :</em> <em>" + compte.siccode + "</em>";
+
       accountTitle.appendChild(sicCode);
 
       // ROW 1 COLUMN 3
