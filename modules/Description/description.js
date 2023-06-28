@@ -31,7 +31,7 @@ fetch("data/vtiger_crmentity.json")
     const dateMofication = document.createElement("span");
     dateMofication.className = "badge badge-warning p-2";
 
-    function formatDate(date) {
+    function formatDate(date, type) {
       const createdTime = new Date(date);
 
       const day = createdTime.getDate().toString().padStart(2, "0");
@@ -41,13 +41,16 @@ fetch("data/vtiger_crmentity.json")
       const minutes = createdTime.getMinutes().toString().padStart(2, "0");
       const seconds = createdTime.getSeconds().toString().padStart(2, "0");
 
-      return `${day}/${month}/${year} à ${hours}h${minutes}min${seconds}s`;
+      return `${type} ${day}/${month}/${year} à ${hours}h${minutes}min${seconds}s`;
     }
 
     // Set the formatted date and time as the text content of the span element
-    dateCreation.textContent = formatDate(description.createdtime);
+    dateCreation.textContent = formatDate(description.createdtime, "crée le ");
 
-    dateMofication.textContent = formatDate(description.modifiedtime);
+    dateMofication.textContent = formatDate(
+      description.modifiedtime,
+      "modifié le "
+    );
 
     const descriptionText = document.createElement("div");
     descriptionText.textContent = description.description || "";
