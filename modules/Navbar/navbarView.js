@@ -1,6 +1,5 @@
 // Create the header element
-var header = document.createElement("header");
-header.id = "navbarPartial";
+const header = document.getElementById("navbarPartial");
 
 // Create the nav element
 var nav = document.createElement("nav");
@@ -76,9 +75,6 @@ containerDiv.appendChild(togglerButton);
 containerDiv.appendChild(collapseDiv);
 nav.appendChild(containerDiv);
 header.appendChild(nav);
-
-// Append the header to the document body or any other desired parent element
-document.body.appendChild(header);
 
 // Add event listener to the toggler button
 togglerButton.addEventListener("click", function () {

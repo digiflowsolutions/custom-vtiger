@@ -1,6 +1,5 @@
 // Create the footer element
-var footer = document.createElement("footer");
-footer.id = "footerPartial";
+const footer = document.getElementById("footerPartial");
 footer.className = "fixed-bottom";
 footer.style.backgroundColor = "#e0e0e0";
 
