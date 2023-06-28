@@ -29,7 +29,7 @@ fetch("data/vtiger_crmentity.json")
     dateCreation.className = "badge badge-success p-2 mr-5 mt-1 mb-3";
 
     const dateMofication = document.createElement("span");
-    dateMofication.className = "badge badge-warning p-2";
+    dateMofication.className = "badge badge-warning p-2 mr-5 mb-3";
 
     function formatDate(date, type) {
       const createdTime = new Date(date);
