@@ -23,26 +23,26 @@ fetch("data/vtiger_account.json")
 
       const row1Column1 = document.createElement("div");
       row1Column1.className =
-        "col-md-4 d-flex justify-content-center align-items-center ";
+        "col-lg-4 d-flex justify-content-center align-items-center ";
 
       const row1Column2 = document.createElement("div");
       row1Column2.className =
-        "col-md-5 d-flex justify-content-center align-items-center";
+        "col-lg-5 d-flex justify-content-center align-items-center";
 
       const row1Column3 = document.createElement("div");
-      row1Column3.className = "col-md-3 d-flex flex-column m-auto";
+      row1Column3.className = "col-lg-3 d-flex flex-column m-auto";
 
       const row2Column1 = document.createElement("div");
       row2Column1.className =
-        "d-flex flex-column mt-3 col-md-4 justify-content-center align-items-md-start align-items-sm-center ";
+        "d-flex flex-column mt-3 col-lg-4 justify-content-center align-items-lg-start align-items-sm-center ";
 
       const row2Column2 = document.createElement("div");
       row2Column2.className =
-        "col-md-4 d-flex flex-column justify-content-center align-items-center ml-auto mr-auto mb-auto mt-sm-5 mt-lg-0";
+        "col-lg-4 d-flex flex-column justify-content-center align-items-center ml-auto mr-auto mb-auto mt-5 mt-lg-0";
 
       const row2Column3 = document.createElement("div");
       row2Column3.className =
-        "col-md-4  d-flex flex-column justify-content-center align-items-center ml-auto mr-auto mb-auto";
+        "col-lg-4  d-flex flex-column justify-content-center align-items-center ml-auto mr-auto mb-auto";
 
       // ROW 1 COLUMN 1
 
@@ -240,7 +240,7 @@ fetch("data/vtiger_account.json")
       // Employees
 
       const cardContainerEmployees = document.createElement("div");
-      cardContainerEmployees.className = "col-12  mb-3";
+      cardContainerEmployees.className = "col-12 mb-3";
 
       const cardEmployee = document.createElement("div");
       cardEmployee.className = "card shadow h-100 py-2 pl-3";
