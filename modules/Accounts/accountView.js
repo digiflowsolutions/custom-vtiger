@@ -34,15 +34,15 @@ fetch("data/vtiger_account.json")
 
       const row2Column1 = document.createElement("div");
       row2Column1.className =
-        "d-flex flex-column mt-3 col-md-4 justify-content-center align-items-md-start align-items-sm-center";
+        "d-flex flex-column mt-3 col-md-4 justify-content-center align-items-md-start align-items-sm-center ";
 
       const row2Column2 = document.createElement("div");
       row2Column2.className =
-        "col-md-4 mt-3 d-flex flex-column justify-content-center align-items-center m-auto";
+        "col-md-4 d-flex flex-column justify-content-center align-items-center ml-auto mr-auto mb-auto mt-sm-5 mt-lg-0";
 
       const row2Column3 = document.createElement("div");
       row2Column3.className =
-        "col-md-4 mt-3 d-flex flex-column justify-content-center align-items-center m-auto";
+        "col-md-4  d-flex flex-column justify-content-center align-items-center ml-auto mr-auto mb-auto";
 
       // ROW 1 COLUMN 1
 
@@ -108,7 +108,7 @@ fetch("data/vtiger_account.json")
       // isconvertedfromlead
       const accountConvertedFromLead = document.createElement("span");
       accountConvertedFromLead.className =
-        "isconvertedfromlead bg-success text-center p-3 rounded text-white m-auto";
+        "isconvertedfromlead bg-success text-center ml-auto mr-auto mt-3 p-3 rounded text-white ";
 
       accountConvertedFromLead.textContent = "converti d'un prospect";
       compte.isconvertedfromlead &&
@@ -147,7 +147,7 @@ fetch("data/vtiger_account.json")
       phone2Link.target = "_blank";
 
       const phones = document.createElement("div");
-      phones.className = "d-flex mt-3 align-items-center";
+      phones.className = "d-flex mt-3 align-items-center m-auto";
 
       phonesNumbers = document.createElement("div");
       phonesNumbers.className = "d-flex flex-column";
@@ -179,7 +179,7 @@ fetch("data/vtiger_account.json")
       email2Link.target = "_blank";
 
       const emails = document.createElement("div");
-      emails.className = "d-flex mt-4 align-items-center";
+      emails.className = "d-flex mt-4 align-items-center m-auto";
 
       emailAdresses = document.createElement("div");
       emailAdresses.className = "d-flex flex-column";
@@ -205,7 +205,7 @@ fetch("data/vtiger_account.json")
       faxLink.target = "_blank";
 
       const fax = document.createElement("div");
-      fax.className = "d-flex mt-4 align-items-center";
+      fax.className = "d-flex mt-4 align-items-center m-auto";
 
       const faxNumber = document.createElement("div");
       faxNumber.className = "d-flex flex-column";
@@ -227,7 +227,7 @@ fetch("data/vtiger_account.json")
       websiteLink.target = "_blank";
 
       const website = document.createElement("div");
-      website.className = "d-flex mt-4 align-items-center";
+      website.className = "d-flex mt-4 align-items-center m-auto";
 
       const websiteUrl = document.createElement("div");
       websiteUrl.className = "d-flex flex-column";
