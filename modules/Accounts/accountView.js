@@ -425,26 +425,26 @@ fetch("data/vtiger_account.json")
 
       // dates
 
-      const timestamp = Date.now();
-      const date = new Date(timestamp);
+      // const timestamp = Date.now();
+      // const date = new Date(timestamp);
 
-      // Extract the individual date components
-      const year = date.getFullYear();
-      let month = date.getMonth() + 1; // Months are zero-based, so we add 1
-      month = month < 10 ? "0" + month : month;
-      const day = date.getDate();
+      // // Extract the individual date components
+      // const year = date.getFullYear();
+      // let month = date.getMonth() + 1; // Months are zero-based, so we add 1
+      // month = month < 10 ? "0" + month : month;
+      // const day = date.getDate();
 
-      // Format the date as a string
-      const formattedDate = day + "/" + month + "/" + year;
+      // // Format the date as a string
+      // const formattedDate = day + "/" + month + "/" + year;
 
-      // date de création
+      // // date de création
 
-      const dateCreation = document.createElement("div");
-      dateCreation.textContent = `date création : ${formattedDate}`;
+      // const dateCreation = document.createElement("div");
+      // dateCreation.textContent = `date création : ${formattedDate}`;
 
-      //date de modification
-      const dateModification = document.createElement("div");
-      dateModification.textContent = `date modification : ${formattedDate}`;
+      // //date de modification
+      // const dateModification = document.createElement("div");
+      // dateModification.textContent = `date modification : ${formattedDate}`;
 
       row1Column1.appendChild(avatarDiv);
       row1Column2.appendChild(accountTitle);
@@ -471,8 +471,8 @@ fetch("data/vtiger_account.json")
       row.appendChild(row3Column1);
       // row.appendChild(row3Column2);
 
-      row3Column1.appendChild(dateCreation);
-      row3Column1.appendChild(dateModification);
+      // row3Column1.appendChild(dateCreation);
+      // row3Column1.appendChild(dateModification);
       // row3Column2.appendChild(cardContainerEmployees);
       // row3Column3.appendChild(cardContainerRevenues);
 

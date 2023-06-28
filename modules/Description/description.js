@@ -24,11 +24,24 @@ fetch("data/vtiger_crmentity.json")
 
     const descriptionDiv = document.createElement("div");
     descriptionDiv.className = "description-content pl-3 mt-2";
-    if (description) {
-      descriptionDiv.textContent = description.description || "";
-    } else {
-      descriptionDiv.textContent = "";
-    }
+
+    const dateCreation = document.createElement("p");
+    dateCreation.textContent = ` crée le ${description.createdtime}`;
+
+    const dateMofication = document.createElement("p");
+    dateMofication.textContent = ` modifié le ${description.createdtime}`;
+
+    const descriptionText = document.createElement("div");
+    descriptionText.textContent = description.description || "";
+
+    // if (description) {
+    //   descriptionDiv.textContent = description.description || "";
+    // } else {
+    //   descriptionDiv.textContent = "";
+    // }
+    descriptionDiv.appendChild(dateCreation);
+    descriptionDiv.appendChild(dateMofication);
+    descriptionDiv.appendChild(descriptionText);
 
     // Hide the description div by default
     descriptionDiv.style.display = "none";
