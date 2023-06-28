@@ -85,14 +85,14 @@ fetch("data/vtiger_account.json")
         "mt-0 d-flex justify-content-center align-items-center flex-column";
 
       // accountname
-      const accountName = document.createElement("h3");
-      accountName.className = "accountname";
+      const accountName = document.createElement("h1");
+      accountName.className = "accountname mb-4";
       accountName.textContent = compte.accountname || "-";
       accountTitle.appendChild(accountName);
 
       //account_type
       const accountType = document.createElement("p");
-      accountType.className = "account_type";
+      accountType.className = "account_type mb-4";
       accountType.textContent = compte.account_type || "-";
       accountTitle.appendChild(accountType);
 
@@ -101,6 +101,12 @@ fetch("data/vtiger_account.json")
       accountIndustry.className = "account_industry";
       accountIndustry.textContent = compte.industry || "-";
       accountTitle.appendChild(accountIndustry);
+
+      //code APE
+
+      const sicCode = document.createElement("div");
+      sicCode.textContent = "APE : " + compte.siccode;
+      accountTitle.appendChild(sicCode);
 
       // ROW 1 COLUMN 3
 
@@ -417,10 +423,6 @@ fetch("data/vtiger_account.json")
 
       cardContainerRating.appendChild(cardRating);
 
-      // code ape
-      const sicCode = document.createElement("div");
-      sicCode.textContent = "Code APE: " + compte.siccode;
-
       // dates
 
       const timestamp = Date.now();
@@ -469,7 +471,6 @@ fetch("data/vtiger_account.json")
       row.appendChild(row3Column1);
       // row.appendChild(row3Column2);
 
-      row3Column1.appendChild(sicCode);
       row3Column1.appendChild(dateCreation);
       row3Column1.appendChild(dateModification);
       // row3Column2.appendChild(cardContainerEmployees);

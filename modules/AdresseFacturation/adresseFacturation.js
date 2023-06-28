@@ -5,7 +5,9 @@ fetch("data/vtiger_accountbillads.json")
       (c) => c.accountaddressid === compteId
     );
 
-    const compteAdresseFacturation = document.getElementById("compte-adresses");
+    const compteAdresseFacturation = document.getElementById(
+      "compte-adresse-facturation"
+    );
 
     const card = document.createElement("div");
     card.className = "container w-100 m-auto";
@@ -34,17 +36,17 @@ fetch("data/vtiger_accountbillads.json")
     const bill_country = document.createElement("p");
 
     if (adresseFacturation) {
-      bill_street.textContent = adresseFacturation.bill_street || "";
+      bill_street.textContent = adresseFacturation.bill_street || "-";
 
-      bill_pobox.textContent = adresseFacturation.bill_pobox || "";
+      bill_pobox.textContent = adresseFacturation.bill_pobox || "-";
 
-      bill_code.textContent = adresseFacturation.bill_code || "";
+      bill_code.textContent = adresseFacturation.bill_code || "-";
 
-      bill_city.textContent = adresseFacturation.bill_city || "";
+      bill_city.textContent = adresseFacturation.bill_city || "-";
 
-      bill_state.textContent = adresseFacturation.bill_state || "";
+      bill_state.textContent = adresseFacturation.bill_state || "-";
 
-      bill_country.textContent = adresseFacturation.bill_country || "";
+      bill_country.textContent = adresseFacturation.bill_country || "-";
     } else {
       bill_street.textContent = "-";
 
