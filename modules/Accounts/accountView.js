@@ -44,13 +44,6 @@ fetch("data/vtiger_account.json")
       row2Column3.className =
         "col-md-4 mt-3 d-flex flex-column justify-content-center align-items-center m-auto";
 
-      const row3Column1 = document.createElement("div");
-      row3Column1.className =
-        "d-flex flex-column mt-5 col-md-4 justify-content-center align-items-md-start align-items-sm-center";
-      // const row3Column2 = document.createElement("div");
-      // row3Column2.className =
-      //   "bg-dark d-flex flex-column mt-3 col-md-8 justify-content-center align-items-md-start align-items-sm-center";
-
       // ROW 1 COLUMN 1
 
       const avatarDiv = document.createElement("div");
@@ -446,8 +439,6 @@ fetch("data/vtiger_account.json")
       row2Column2.appendChild(cardContainerEmployees);
       row2Column3.appendChild(cardContainerRevenues);
       row2Column3.appendChild(cardContainerRating);
-
-      row.appendChild(row3Column1);
 
       card.appendChild(backButton);
       card.appendChild(row);
