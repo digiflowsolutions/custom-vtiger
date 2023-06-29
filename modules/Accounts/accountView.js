@@ -74,12 +74,13 @@ fetch("data/vtiger_account.json")
 
       // Create the <label> for form input
       const numAccountLabel = document.createElement("label");
-      numAccountLabel.textContent = "N° du compte";
+      numAccountLabel.textContent = "N°";
 
       // Create the <input> for name
       const numAccountInput = document.createElement("input");
       numAccountInput.type = "text";
       numAccountInput.className = "form-control";
+      numAccountInput.placeholder = 'ex: "COMP01" ';
 
       // Append the label and input to the form group
       formNumAccountDiv.appendChild(numAccountLabel);
@@ -91,12 +92,14 @@ fetch("data/vtiger_account.json")
 
       // Create the <label> for form input
       const nameLabel = document.createElement("label");
-      nameLabel.textContent = "Nom du compte";
+      nameLabel.textContent = "Nom";
 
       // Create the <input> for name
       const nameInput = document.createElement("input");
+      nameInput.id = "nameInput";
       nameInput.type = "text";
       nameInput.className = "form-control";
+      nameInput.placeholder = 'ex: "DIGIFLOW" ';
 
       // Append the label and input to the form group
       formNameDiv.appendChild(nameLabel);
@@ -119,10 +122,28 @@ fetch("data/vtiger_account.json")
       emailGroupDiv.appendChild(emailLabel);
       emailGroupDiv.appendChild(emailInput);
 
+      // Create the <div> for form group
+      const emailSecondaryGroupDiv = document.createElement("div");
+      emailSecondaryGroupDiv.className = "form-group";
+
+      // Create the <label> for email input
+      const emailSecondaryLabel = document.createElement("label");
+      emailSecondaryLabel.textContent = "Email secondaire";
+
+      // Create the <input> for email
+      const emailSecondaryInput = document.createElement("input");
+      emailSecondaryInput.type = "email";
+      emailSecondaryInput.className = "form-control";
+
+      // Append the label and input to the form group
+      emailSecondaryGroupDiv.appendChild(emailSecondaryLabel);
+      emailSecondaryGroupDiv.appendChild(emailSecondaryInput);
+
       // Append the form groups to the form element
       formElement.appendChild(formNumAccountDiv);
       formElement.appendChild(formNameDiv);
       formElement.appendChild(emailGroupDiv);
+      formElement.appendChild(emailSecondaryGroupDiv);
 
       // Append the form element to the modal body
       modalBodyDiv.appendChild(formElement);
@@ -136,6 +157,19 @@ fetch("data/vtiger_account.json")
       saveChangesButton.type = "button";
       saveChangesButton.className = "btn btn-success";
       saveChangesButton.textContent = "Enregistrer";
+      saveChangesButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevents the default form submission behavior
+
+        const nameInput = document.getElementById("nameInput");
+
+        if (nameInput.value.trim() === "") {
+          alert("Nom obligatoire");
+          return;
+        }
+
+        // Close the modal
+        modalDiv.style.display = "none";
+      });
 
       // Create the close button for modal footer
       const closeButtonFooter = document.createElement("button");
