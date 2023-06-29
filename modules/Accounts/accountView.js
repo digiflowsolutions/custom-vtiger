@@ -8,214 +8,186 @@ fetch("data/vtiger_account.json")
 
     if (compte) {
       //MODAL ADD INSTANCE
-      // Create the main <div> element with class and attributes
       const modalDiv = document.createElement("div");
       modalDiv.className = "modal";
       modalDiv.setAttribute("tabindex", "-1");
       modalDiv.setAttribute("role", "dialog");
-      // Event listener for clicks outside the modalDiv
+
       document.addEventListener("click", function (event) {
         if (event.target === modalDiv && modalDiv.style.display === "block") {
+          numAccountInput.value = ""; // Reset
+          nameInput.value = ""; // Reset
+
           modalDiv.style.display = "none";
         }
       });
 
-      // Create the <div> for modal dialog
       const modalDialogDiv = document.createElement("div");
       modalDialogDiv.className = "modal-dialog";
       modalDialogDiv.setAttribute("role", "document");
 
-      // Create the <div> for modal content
       const modalContentDiv = document.createElement("div");
       modalContentDiv.className = "modal-content";
 
-      // Create the <div> for modal header
       const modalHeaderDiv = document.createElement("div");
       modalHeaderDiv.className = "modal-header";
 
-      // Create the <h5> for modal title
       const modalTitleH5 = document.createElement("h5");
       modalTitleH5.className = "modal-title";
       modalTitleH5.textContent = "Ajouter un compte";
 
-      // Create the close button for modal header
       const closeButton = document.createElement("button");
       closeButton.type = "button";
       closeButton.className = "close";
       closeButton.setAttribute("data-dismiss", "modal");
       closeButton.setAttribute("aria-label", "Close");
-      // Add onclick event listener to close button
-      closeButton.addEventListener("click", function () {
-        // Close the modal
+
+      closeButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
         modalDiv.style.display = "none";
       });
-      // Create the <span> for close button
+
       const closeSpan = document.createElement("span");
       closeSpan.setAttribute("aria-hidden", "true");
       closeSpan.innerHTML = "&times;";
 
-      // Append the close <span> to the close button
       closeButton.appendChild(closeSpan);
 
-      // Append the modal title and close button to modal header
       modalHeaderDiv.appendChild(modalTitleH5);
       modalHeaderDiv.appendChild(closeButton);
 
-      // Create the <div> for modal body
       const modalBodyDiv = document.createElement("div");
       modalBodyDiv.className = "modal-body";
 
-      // Create the <form> element for the modal body
       const formElement = document.createElement("form");
 
-      // Create the <div> for form group
       const formNumAccountDiv = document.createElement("div");
       formNumAccountDiv.className = "form-group";
 
-      // Create the <label> for form input
       const numAccountLabel = document.createElement("label");
       numAccountLabel.textContent = "N°";
 
-      // Create the <input> for name
+      // Account name input
       const numAccountInput = document.createElement("input");
       numAccountInput.type = "text";
       numAccountInput.className = "form-control";
       numAccountInput.placeholder = 'ex: "COMP01" ';
 
-      // Append the label and input to the form group
       formNumAccountDiv.appendChild(numAccountLabel);
       formNumAccountDiv.appendChild(numAccountInput);
 
-      // Create the <div> for form group
       const formNameDiv = document.createElement("div");
       formNameDiv.className = "form-group";
 
-      // Create the <label> for form input
       const nameLabel = document.createElement("label");
       nameLabel.textContent = "Nom";
 
-      // Create the <input> for name
       const nameInput = document.createElement("input");
       nameInput.id = "nameInput";
       nameInput.type = "text";
       nameInput.className = "form-control";
       nameInput.placeholder = 'ex: "DIGIFLOW" ';
 
-      // Append the label and input to the form group
       formNameDiv.appendChild(nameLabel);
       formNameDiv.appendChild(nameInput);
 
-      // Create the <div> for form group
+      // Email input
       const emailGroupDiv = document.createElement("div");
       emailGroupDiv.className = "form-group";
 
-      // Create the <label> for email input
       const emailLabel = document.createElement("label");
       emailLabel.textContent = "Email principal";
 
-      // Create the <input> for email
       const emailInput = document.createElement("input");
       emailInput.type = "email";
       emailInput.className = "form-control";
       emailInput.placeholder = 'ex: "contact@digiflow-solutions.net" ';
 
-      // Append the label and input to the form group
       emailGroupDiv.appendChild(emailLabel);
       emailGroupDiv.appendChild(emailInput);
 
-      // Create the <div> for form group
+      // Email secondaire
       const emailSecondaryGroupDiv = document.createElement("div");
       emailSecondaryGroupDiv.className = "form-group";
 
-      // Create the <label> for email input
       const emailSecondaryLabel = document.createElement("label");
       emailSecondaryLabel.textContent = "Email secondaire";
 
-      // Create the <input> for email
       const emailSecondaryInput = document.createElement("input");
       emailSecondaryInput.type = "email";
       emailSecondaryInput.className = "form-control";
       emailSecondaryInput.placeholder = 'ex: "dev@digiflow-solutions.net" ';
 
-      // Append the label and input to the form group
       emailSecondaryGroupDiv.appendChild(emailSecondaryLabel);
       emailSecondaryGroupDiv.appendChild(emailSecondaryInput);
 
-      // Create the <div> for form group
+      // Account type
       const accountTypeGroupDiv = document.createElement("div");
       accountTypeGroupDiv.className = "form-group";
 
-      // Create the <label> for email input
       const accountTypeLabel = document.createElement("label");
       accountTypeLabel.textContent = "Type";
 
-      // Create the <input> for email
       const accountTypeInput = document.createElement("input");
       accountTypeInput.type = "type";
       accountTypeInput.className = "form-control";
       accountTypeInput.placeholder = "ex: CRM";
 
-      // Append the label and input to the form group
       accountTypeGroupDiv.appendChild(accountTypeLabel);
       accountTypeGroupDiv.appendChild(accountTypeInput);
 
-      // Append the form groups to the form element
       formElement.appendChild(formNumAccountDiv);
       formElement.appendChild(formNameDiv);
       formElement.appendChild(accountTypeGroupDiv);
       formElement.appendChild(emailGroupDiv);
       formElement.appendChild(emailSecondaryGroupDiv);
 
-      // Append the form element to the modal body
       modalBodyDiv.appendChild(formElement);
 
-      // Create the <div> for modal footer
       const modalFooterDiv = document.createElement("div");
       modalFooterDiv.className = "modal-footer";
 
-      // Create the save changes button for modal footer
       const saveChangesButton = document.createElement("button");
       saveChangesButton.type = "button";
       saveChangesButton.className = "btn btn-success";
       saveChangesButton.textContent = "Enregistrer";
       saveChangesButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevents the default form submission behavior
-
-        const nameInput = document.getElementById("nameInput");
+        event.preventDefault();
+        event.stopPropagation();
 
         if (nameInput.value.trim() === "") {
           alert("Nom obligatoire");
           return;
         }
-
-        // Close the modal
+        numAccountInput.value = ""; // Reset
+        nameInput.value = ""; // Reset
         modalDiv.style.display = "none";
       });
 
-      // Create the close button for modal footer
       const closeButtonFooter = document.createElement("button");
       closeButtonFooter.type = "button";
       closeButtonFooter.className = "btn btn-danger";
       closeButtonFooter.setAttribute("data-dismiss", "modal");
       closeButtonFooter.textContent = "Annuler";
-      closeButtonFooter.addEventListener("click", function () {
-        // Close the modal
+      closeButtonFooter.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        numAccountInput.value = ""; // Reset
+        nameInput.value = ""; // Reset
+
         modalDiv.style.display = "none";
       });
 
-      // Append the save changes button and close button to modal footer
       modalFooterDiv.appendChild(saveChangesButton);
       modalFooterDiv.appendChild(closeButtonFooter);
 
-      // Append modal header, modal body, and modal footer to modal content
       modalContentDiv.appendChild(modalHeaderDiv);
       modalContentDiv.appendChild(modalBodyDiv);
       modalContentDiv.appendChild(modalFooterDiv);
 
-      // Append modal dialog to main modal <div>
       modalDialogDiv.appendChild(modalContentDiv);
 
-      // Append main modal <div> to the document body
       modalDiv.appendChild(modalDialogDiv);
 
       const backButton = document.createElement("a");
@@ -227,8 +199,9 @@ fetch("data/vtiger_account.json")
       const addInstance = document.createElement("a");
       addInstance.innerHTML = '<i class="fa fa-plus" ></i>';
       addInstance.className = "plus-link mb-3 text-dark";
-      addInstance.addEventListener("click", function () {
-        // Close the modal
+      addInstance.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
         modalDiv.style.display = "block";
       });
 
@@ -291,10 +264,11 @@ fetch("data/vtiger_account.json")
 
       accountNo.style.width = "120px";
       accountNo.style.height = "30px";
-      // accountNo.style.top = "58px";
-      // accountNo.style.left = "58px";
+
       accountNo.textContent = `${compte.account_no} / ${data.length}` || "-";
       avatarDiv.appendChild(accountNo);
+
+      row1Column1.appendChild(avatarDiv);
 
       // ROW 1 COLUMN 2
       const accountTitle = document.createElement("div");
@@ -312,6 +286,7 @@ fetch("data/vtiger_account.json")
       accountType.className = "account_type mb-3";
       accountType.textContent = compte.account_type || "-";
       accountTitle.appendChild(accountType);
+      row1Column2.appendChild(accountTitle);
 
       //industry
       const accountIndustry = document.createElement("h5");
@@ -320,7 +295,6 @@ fetch("data/vtiger_account.json")
       accountTitle.appendChild(accountIndustry);
 
       //code APE
-
       const sicCode = document.createElement("div");
       sicCode.innerHTML =
         "<em><u>APE</u> :</em> <em>" + compte.siccode + "</em>";
@@ -350,6 +324,7 @@ fetch("data/vtiger_account.json")
         badge.textContent = tag;
         containerTags.appendChild(badge);
       });
+      row1Column3.appendChild(containerTags);
 
       // ROW 2 COLUMN 1
       // phone + otherphone
@@ -384,6 +359,8 @@ fetch("data/vtiger_account.json")
       compte.otherphone && phonesNumbers.appendChild(phone2Link);
       compte.otherphone && phones.appendChild(phonesNumbers);
 
+      row2Column1.appendChild(phones);
+
       // email1 + email2
 
       const emojiEmail = document.createElement("h3");
@@ -416,6 +393,8 @@ fetch("data/vtiger_account.json")
       compte.email2 && emailAdresses.appendChild(email2Link);
       compte.email2 && emails.appendChild(emailAdresses);
 
+      row2Column1.appendChild(emails);
+
       // fax
 
       const emojiFax = document.createElement("h3");
@@ -437,6 +416,8 @@ fetch("data/vtiger_account.json")
       compte.fax && fax.appendChild(emojiFax);
       compte.fax && faxNumber.appendChild(faxLink);
       compte.fax && fax.appendChild(faxNumber);
+
+      row2Column1.appendChild(fax);
 
       //website
       const emojiWebsite = document.createElement("h3");
@@ -460,9 +441,11 @@ fetch("data/vtiger_account.json")
       compte.website && websiteUrl.appendChild(websiteLink);
       compte.website && website.appendChild(websiteUrl);
 
-      // row2Column2
-      // Employees
+      row2Column1.appendChild(website);
 
+      // row2Column2
+
+      // Employees
       const cardContainerEmployees = document.createElement("div");
       cardContainerEmployees.className = "col-12 mb-3";
 
@@ -506,8 +489,9 @@ fetch("data/vtiger_account.json")
 
       cardContainerEmployees.appendChild(cardEmployee);
 
-      // OWNERSHIP (propriétaire)
+      row2Column2.appendChild(cardContainerEmployees);
 
+      // OWNERSHIP (propriétaire)
       const cardContainerOwner = document.createElement("div");
       cardContainerOwner.className = "col-12  mb-3";
 
@@ -549,6 +533,7 @@ fetch("data/vtiger_account.json")
       cardOwner.appendChild(cardOwnerBody);
 
       cardContainerOwner.appendChild(cardOwner);
+      row2Column2.appendChild(cardContainerOwner);
 
       // row2Column3
 
@@ -598,6 +583,7 @@ fetch("data/vtiger_account.json")
       cardRevenue.appendChild(cardRevenueBody);
 
       cardContainerRevenues.appendChild(cardRevenue);
+      row2Column3.appendChild(cardContainerRevenues);
 
       // RATINGS
       const cardContainerRating = document.createElement("div");
@@ -632,37 +618,21 @@ fetch("data/vtiger_account.json")
 
       cardRatingColumnLeft.appendChild(divTextRating);
       cardRatingColumnLeft.appendChild(divH5Rating);
-
       cardRatingRow.appendChild(cardRatingColumnLeft);
       cardRatingRow.appendChild(divColAutoRating);
       cardRatingBody.appendChild(cardRatingRow);
       divColAutoRating.appendChild(iElementRating);
-
       cardRating.appendChild(cardRatingBody);
-
       cardContainerRating.appendChild(cardRating);
-
-      row1Column1.appendChild(avatarDiv);
-      row1Column2.appendChild(accountTitle);
-      row1Column3.appendChild(containerTags);
+      row2Column3.appendChild(cardContainerRating);
 
       row.appendChild(row1Column1);
       row.appendChild(row1Column2);
       row.appendChild(row1Column3);
 
-      row2Column1.appendChild(phones);
-      row2Column1.appendChild(emails);
-      row2Column1.appendChild(fax);
-      row2Column1.appendChild(website);
-
       row.appendChild(row2Column1);
       row.appendChild(row2Column2);
       row.appendChild(row2Column3);
-
-      row2Column2.appendChild(cardContainerOwner);
-      row2Column2.appendChild(cardContainerEmployees);
-      row2Column3.appendChild(cardContainerRevenues);
-      row2Column3.appendChild(cardContainerRating);
 
       card.appendChild(modalDiv);
       card.appendChild(topHeader);
