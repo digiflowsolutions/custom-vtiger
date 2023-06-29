@@ -69,12 +69,29 @@ fetch("data/vtiger_account.json")
       const formElement = document.createElement("form");
 
       // Create the <div> for form group
-      const formGroupDiv = document.createElement("div");
-      formGroupDiv.className = "form-group";
+      const formNumAccountDiv = document.createElement("div");
+      formNumAccountDiv.className = "form-group";
+
+      // Create the <label> for form input
+      const numAccountLabel = document.createElement("label");
+      numAccountLabel.textContent = "N° du compte";
+
+      // Create the <input> for name
+      const numAccountInput = document.createElement("input");
+      numAccountInput.type = "text";
+      numAccountInput.className = "form-control";
+
+      // Append the label and input to the form group
+      formNumAccountDiv.appendChild(numAccountLabel);
+      formNumAccountDiv.appendChild(numAccountInput);
+
+      // Create the <div> for form group
+      const formNameDiv = document.createElement("div");
+      formNameDiv.className = "form-group";
 
       // Create the <label> for form input
       const nameLabel = document.createElement("label");
-      nameLabel.textContent = "Name";
+      nameLabel.textContent = "Nom du compte";
 
       // Create the <input> for name
       const nameInput = document.createElement("input");
@@ -82,8 +99,8 @@ fetch("data/vtiger_account.json")
       nameInput.className = "form-control";
 
       // Append the label and input to the form group
-      formGroupDiv.appendChild(nameLabel);
-      formGroupDiv.appendChild(nameInput);
+      formNameDiv.appendChild(nameLabel);
+      formNameDiv.appendChild(nameInput);
 
       // Create the <div> for form group
       const emailGroupDiv = document.createElement("div");
@@ -91,7 +108,7 @@ fetch("data/vtiger_account.json")
 
       // Create the <label> for email input
       const emailLabel = document.createElement("label");
-      emailLabel.textContent = "Email";
+      emailLabel.textContent = "Email principal";
 
       // Create the <input> for email
       const emailInput = document.createElement("input");
@@ -103,7 +120,8 @@ fetch("data/vtiger_account.json")
       emailGroupDiv.appendChild(emailInput);
 
       // Append the form groups to the form element
-      formElement.appendChild(formGroupDiv);
+      formElement.appendChild(formNumAccountDiv);
+      formElement.appendChild(formNameDiv);
       formElement.appendChild(emailGroupDiv);
 
       // Append the form element to the modal body
@@ -116,13 +134,13 @@ fetch("data/vtiger_account.json")
       // Create the save changes button for modal footer
       const saveChangesButton = document.createElement("button");
       saveChangesButton.type = "button";
-      saveChangesButton.className = "btn btn-primary";
+      saveChangesButton.className = "btn btn-success";
       saveChangesButton.textContent = "Enregistrer";
 
       // Create the close button for modal footer
       const closeButtonFooter = document.createElement("button");
       closeButtonFooter.type = "button";
-      closeButtonFooter.className = "btn btn-secondary";
+      closeButtonFooter.className = "btn btn-danger";
       closeButtonFooter.setAttribute("data-dismiss", "modal");
       closeButtonFooter.textContent = "Annuler";
       closeButtonFooter.addEventListener("click", function () {
@@ -261,7 +279,7 @@ fetch("data/vtiger_account.json")
       accountConvertedFromLead.className =
         "isconvertedfromlead bg-success text-center ml-auto mr-auto mt-3 p-3 rounded text-white ";
 
-      accountConvertedFromLead.textContent = "converti d'un prospect";
+      accountConvertedFromLead.textContent = "CONVERTI D'UN PROSPECT";
       compte.isconvertedfromlead &&
         row1Column3.appendChild(accountConvertedFromLead);
 
