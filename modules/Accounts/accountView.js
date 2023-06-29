@@ -117,6 +117,7 @@ fetch("data/vtiger_account.json")
       const emailInput = document.createElement("input");
       emailInput.type = "email";
       emailInput.className = "form-control";
+      emailInput.placeholder = 'ex: "contact@digiflow-solutions.net" ';
 
       // Append the label and input to the form group
       emailGroupDiv.appendChild(emailLabel);
@@ -134,14 +135,34 @@ fetch("data/vtiger_account.json")
       const emailSecondaryInput = document.createElement("input");
       emailSecondaryInput.type = "email";
       emailSecondaryInput.className = "form-control";
+      emailSecondaryInput.placeholder = 'ex: "dev@digiflow-solutions.net" ';
 
       // Append the label and input to the form group
       emailSecondaryGroupDiv.appendChild(emailSecondaryLabel);
       emailSecondaryGroupDiv.appendChild(emailSecondaryInput);
 
+      // Create the <div> for form group
+      const accountTypeGroupDiv = document.createElement("div");
+      accountTypeGroupDiv.className = "form-group";
+
+      // Create the <label> for email input
+      const accountTypeLabel = document.createElement("label");
+      accountTypeLabel.textContent = "Type";
+
+      // Create the <input> for email
+      const accountTypeInput = document.createElement("input");
+      accountTypeInput.type = "type";
+      accountTypeInput.className = "form-control";
+      accountTypeInput.placeholder = "ex: CRM";
+
+      // Append the label and input to the form group
+      accountTypeGroupDiv.appendChild(accountTypeLabel);
+      accountTypeGroupDiv.appendChild(accountTypeInput);
+
       // Append the form groups to the form element
       formElement.appendChild(formNumAccountDiv);
       formElement.appendChild(formNameDiv);
+      formElement.appendChild(accountTypeGroupDiv);
       formElement.appendChild(emailGroupDiv);
       formElement.appendChild(emailSecondaryGroupDiv);
 
