@@ -7,12 +7,163 @@ fetch("data/vtiger_account.json")
     const compte = data.find((c) => c.accountid === parseInt(compteId));
 
     if (compte) {
+      //MODAL ADD INSTANCE
+      // Create the main <div> element with class and attributes
+      const modalDiv = document.createElement("div");
+      modalDiv.className = "modal";
+      modalDiv.setAttribute("tabindex", "-1");
+      modalDiv.setAttribute("role", "dialog");
+      // Event listener for clicks outside the modalDiv
+      document.addEventListener("click", function (event) {
+        if (event.target === modalDiv && modalDiv.style.display === "block") {
+          modalDiv.style.display = "none";
+        }
+      });
+
+      // Create the <div> for modal dialog
+      const modalDialogDiv = document.createElement("div");
+      modalDialogDiv.className = "modal-dialog";
+      modalDialogDiv.setAttribute("role", "document");
+
+      // Create the <div> for modal content
+      const modalContentDiv = document.createElement("div");
+      modalContentDiv.className = "modal-content";
+
+      // Create the <div> for modal header
+      const modalHeaderDiv = document.createElement("div");
+      modalHeaderDiv.className = "modal-header";
+
+      // Create the <h5> for modal title
+      const modalTitleH5 = document.createElement("h5");
+      modalTitleH5.className = "modal-title";
+      modalTitleH5.textContent = "Ajouter un compte";
+
+      // Create the close button for modal header
+      const closeButton = document.createElement("button");
+      closeButton.type = "button";
+      closeButton.className = "close";
+      closeButton.setAttribute("data-dismiss", "modal");
+      closeButton.setAttribute("aria-label", "Close");
+      // Add onclick event listener to close button
+      closeButton.addEventListener("click", function () {
+        // Close the modal
+        modalDiv.style.display = "none";
+      });
+      // Create the <span> for close button
+      const closeSpan = document.createElement("span");
+      closeSpan.setAttribute("aria-hidden", "true");
+      closeSpan.innerHTML = "&times;";
+
+      // Append the close <span> to the close button
+      closeButton.appendChild(closeSpan);
+
+      // Append the modal title and close button to modal header
+      modalHeaderDiv.appendChild(modalTitleH5);
+      modalHeaderDiv.appendChild(closeButton);
+
+      // Create the <div> for modal body
+      const modalBodyDiv = document.createElement("div");
+      modalBodyDiv.className = "modal-body";
+
+      // Create the <form> element for the modal body
+      const formElement = document.createElement("form");
+
+      // Create the <div> for form group
+      const formGroupDiv = document.createElement("div");
+      formGroupDiv.className = "form-group";
+
+      // Create the <label> for form input
+      const nameLabel = document.createElement("label");
+      nameLabel.textContent = "Name";
+
+      // Create the <input> for name
+      const nameInput = document.createElement("input");
+      nameInput.type = "text";
+      nameInput.className = "form-control";
+
+      // Append the label and input to the form group
+      formGroupDiv.appendChild(nameLabel);
+      formGroupDiv.appendChild(nameInput);
+
+      // Create the <div> for form group
+      const emailGroupDiv = document.createElement("div");
+      emailGroupDiv.className = "form-group";
+
+      // Create the <label> for email input
+      const emailLabel = document.createElement("label");
+      emailLabel.textContent = "Email";
+
+      // Create the <input> for email
+      const emailInput = document.createElement("input");
+      emailInput.type = "email";
+      emailInput.className = "form-control";
+
+      // Append the label and input to the form group
+      emailGroupDiv.appendChild(emailLabel);
+      emailGroupDiv.appendChild(emailInput);
+
+      // Append the form groups to the form element
+      formElement.appendChild(formGroupDiv);
+      formElement.appendChild(emailGroupDiv);
+
+      // Append the form element to the modal body
+      modalBodyDiv.appendChild(formElement);
+
+      // Create the <div> for modal footer
+      const modalFooterDiv = document.createElement("div");
+      modalFooterDiv.className = "modal-footer";
+
+      // Create the save changes button for modal footer
+      const saveChangesButton = document.createElement("button");
+      saveChangesButton.type = "button";
+      saveChangesButton.className = "btn btn-primary";
+      saveChangesButton.textContent = "Enregistrer";
+
+      // Create the close button for modal footer
+      const closeButtonFooter = document.createElement("button");
+      closeButtonFooter.type = "button";
+      closeButtonFooter.className = "btn btn-secondary";
+      closeButtonFooter.setAttribute("data-dismiss", "modal");
+      closeButtonFooter.textContent = "Annuler";
+      closeButtonFooter.addEventListener("click", function () {
+        // Close the modal
+        modalDiv.style.display = "none";
+      });
+
+      // Append the save changes button and close button to modal footer
+      modalFooterDiv.appendChild(saveChangesButton);
+      modalFooterDiv.appendChild(closeButtonFooter);
+
+      // Append modal header, modal body, and modal footer to modal content
+      modalContentDiv.appendChild(modalHeaderDiv);
+      modalContentDiv.appendChild(modalBodyDiv);
+      modalContentDiv.appendChild(modalFooterDiv);
+
+      // Append modal dialog to main modal <div>
+      modalDialogDiv.appendChild(modalContentDiv);
+
+      // Append main modal <div> to the document body
+      modalDiv.appendChild(modalDialogDiv);
+
       const backButton = document.createElement("a");
       backButton.href = "/comptes.html";
-      backButton.innerHTML =
-        '<i class="fa fa-arrow-left" aria-hidden="true"></i>';
+      backButton.innerHTML = '<i class="fa fa-arrow-left" ></i>';
       backButton.className = "arrow-link mb-3 text-dark";
       backButton.style.display = "inline-block";
+
+      const addInstance = document.createElement("a");
+      addInstance.innerHTML = '<i class="fa fa-plus" ></i>';
+      addInstance.className = "plus-link mb-3 text-dark";
+      addInstance.addEventListener("click", function () {
+        // Close the modal
+        modalDiv.style.display = "block";
+      });
+
+      const topHeader = document.createElement("div");
+      topHeader.className = "d-flex justify-content-between";
+
+      topHeader.appendChild(backButton);
+      topHeader.appendChild(addInstance);
 
       const compteDetails = document.getElementById("compte-details");
       const card = document.createElement("div");
@@ -440,7 +591,9 @@ fetch("data/vtiger_account.json")
       row2Column3.appendChild(cardContainerRevenues);
       row2Column3.appendChild(cardContainerRating);
 
-      card.appendChild(backButton);
+      card.appendChild(modalDiv);
+      card.appendChild(topHeader);
+
       card.appendChild(row);
 
       compteDetails.appendChild(card);

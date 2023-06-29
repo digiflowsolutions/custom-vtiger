@@ -98,16 +98,14 @@ nav {
 }
 
 /* LISTS / CARDS */
-.arrow {
-  cursor: pointer;
-  font-size: 40px;
-  margin: 0;
-  /* width: 20px;
-  height: 20px;
-  color: #dc3545; */
-}
+
 .arrow-link {
   font-size: 40px;
+}
+
+.plus-link {
+  font-size: 30px;
+  cursor: pointer;
 }
 .cursor-pointer {
   cursor: pointer;
