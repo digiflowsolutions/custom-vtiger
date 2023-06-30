@@ -216,7 +216,7 @@ fetch("data/vtiger_account.json")
       card.className = "container w-100 m-auto";
 
       const row = document.createElement("div");
-      row.className = "row";
+      row.className = "row mb-5";
 
       const row1Column1 = document.createElement("div");
       row1Column1.className =
@@ -307,7 +307,7 @@ fetch("data/vtiger_account.json")
       // isconvertedfromlead
       const accountConvertedFromLead = document.createElement("span");
       accountConvertedFromLead.className =
-        "isconvertedfromlead bg-success text-center ml-auto mr-auto mt-3 p-3 rounded text-white ";
+        "isconvertedfromlead bg-success text-center ml-auto mr-auto mt-3 mb-2 p-2 rounded text-white ";
 
       accountConvertedFromLead.textContent = "CONVERTI D'UN PROSPECT";
       compte.isconvertedfromlead &&
@@ -321,11 +321,31 @@ fetch("data/vtiger_account.json")
 
       compte.tags.map((tag) => {
         const badge = document.createElement("span");
-        badge.className = "badge badge-info p-2 mr-2 mt-3 text-center";
+        badge.className = "badge badge-info p-2 m-2 text-center";
         badge.textContent = tag;
         containerTags.appendChild(badge);
       });
       row1Column3.appendChild(containerTags);
+
+      //emailoptout + notify owner
+
+      const emailNotif = document.createElement("div");
+      emailNotif.className =
+        "d-flex justify-row justify-content-center align-items-center";
+
+      const emailOptOut = document.createElement("span");
+      emailOptOut.className = "badge badge-warning p-2 m-2 text-center";
+      emailOptOut.innerHTML =
+        "<u>Emailoptout</u> : " + (compte.emailoptout ? "oui" : "non");
+      emailNotif.appendChild(emailOptOut);
+
+      const notifyOwner = document.createElement("span");
+      notifyOwner.className = "badge badge-warning p-2 m-2 text-center";
+      notifyOwner.innerHTML =
+        "<u>Notifier</u> : " + (compte.notifyOwner ? "oui" : "non");
+      emailNotif.appendChild(notifyOwner);
+
+      row1Column3.appendChild(emailNotif);
 
       // ROW 2 COLUMN 1
       // phone + otherphone
