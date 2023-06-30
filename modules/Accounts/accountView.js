@@ -283,19 +283,20 @@ fetch("data/vtiger_account.json")
 
       //account_type
       const accountType = document.createElement("h3");
-      accountType.className = "account_type mb-3";
+      accountType.className = "account_type mb-3 text-center";
       accountType.textContent = compte.account_type || "-";
       accountTitle.appendChild(accountType);
       row1Column2.appendChild(accountTitle);
 
       //industry
       const accountIndustry = document.createElement("h5");
-      accountIndustry.className = "account_industry mb-3";
+      accountIndustry.className = "account_industry mb-3 text-center";
       accountIndustry.textContent = compte.industry || "-";
       accountTitle.appendChild(accountIndustry);
 
       //code APE
       const sicCode = document.createElement("div");
+      sicCode.className = "text-center";
       sicCode.innerHTML =
         "<em><u>APE</u> :</em> <em>" + compte.siccode + "</em>";
 
@@ -626,6 +627,73 @@ fetch("data/vtiger_account.json")
       cardContainerRating.appendChild(cardRating);
       row2Column3.appendChild(cardContainerRating);
 
+      //CAROUSSEL
+      // Create the scrollable-div container
+      const scrollableDiv = document.createElement("div");
+      scrollableDiv.className = "scrollable-div ";
+
+      // Create the icon-list unordered list
+      const iconList = document.createElement("ul");
+      iconList.className =
+        "icon-list d-flex flex-row align-items-center justify-content-around p-4";
+
+      // Create the list items for the icons
+      const icon1 = createIconListItem(
+        "/skins/images/icone-affaires.png",
+        "#",
+        "affaires"
+      );
+      const icon2 = createIconListItem(
+        "/skins/images/icone-campagnes.png",
+        "#",
+        "campagnes"
+      );
+      const icon3 = createIconListItem(
+        "/skins/images/icone-contacts.png",
+        "#",
+        "contacts"
+      );
+      const icon4 = createIconListItem(
+        "/skins/images/icone-facturation.png",
+        "#",
+        "facturation"
+      );
+      const icon5 = createIconListItem(
+        "/skins/images/icone-bdc.png",
+        "#",
+        "bons de commande"
+      );
+
+      // Append the list items to the icon-list
+      iconList.appendChild(icon1);
+      iconList.appendChild(icon2);
+      iconList.appendChild(icon3);
+      iconList.appendChild(icon4);
+      iconList.appendChild(icon5);
+
+      // Append the icon-list to the scrollable-div
+      scrollableDiv.appendChild(iconList);
+
+      // Helper function to create an icon list item
+      function createIconListItem(src, href, alt) {
+        const listItem = document.createElement("li");
+        listItem.className = "d-flex justify-content-center align-items-center";
+        const link = document.createElement("a");
+        const image = document.createElement("img");
+
+        link.href = href;
+        image.src = src;
+        image.alt = alt;
+        image.width = "50";
+
+        link.appendChild(image);
+        listItem.appendChild(link);
+
+        return listItem;
+      }
+
+      //GLOBAL APPENCHILD
+
       row.appendChild(row1Column1);
       row.appendChild(row1Column2);
       row.appendChild(row1Column3);
@@ -638,7 +706,7 @@ fetch("data/vtiger_account.json")
       card.appendChild(topHeader);
 
       card.appendChild(row);
-
+      card.appendChild(scrollableDiv);
       compteDetails.appendChild(card);
     } else {
       const errorElement = document.createElement("p");
