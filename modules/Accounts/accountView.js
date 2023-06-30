@@ -664,12 +664,25 @@ fetch("data/vtiger_account.json")
         "bons de commande"
       );
 
+      const icon6 = createIconListItem(
+        "/skins/images/icone-bdl.png",
+        "#",
+        "bons de livraison"
+      );
+      const icon7 = createIconListItem(
+        "/skins/images/icone-contrat.png",
+        "#",
+        "contrats"
+      );
+
       // Append the list items to the icon-list
       iconList.appendChild(icon1);
       iconList.appendChild(icon2);
       iconList.appendChild(icon3);
       iconList.appendChild(icon4);
       iconList.appendChild(icon5);
+      iconList.appendChild(icon6);
+      iconList.appendChild(icon7);
 
       // Append the icon-list to the scrollable-div
       scrollableDiv.appendChild(iconList);
